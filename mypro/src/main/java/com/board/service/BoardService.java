@@ -15,4 +15,7 @@ public interface BoardService {
 	
 	public void contact(BoardVO vo) throws Exception;
 	
+	//게시물 조회
+	public BoardVO jokbal_view(int bno) throws Exception;
+	
 }

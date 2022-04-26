@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardVO;
 import com.board.service.BoardService;
@@ -46,6 +47,17 @@ BoardService service;
 	 return "redirect:/board/contact";
 	 
  }
+ //게시물
+ @RequestMapping(value = "/nightEat/jokbal_view", method = RequestMethod.GET)
+	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
+	 
+	 BoardVO vo = service.jokbal_view(bno);
+	 
+	 model.addAttribute("jokbal_view",vo);
+	 
+ }
+ 
+ 
  
  @RequestMapping(value = "/nightEat/jokbal", method = RequestMethod.GET)
 	public void getJokbal(Model model) throws Exception {

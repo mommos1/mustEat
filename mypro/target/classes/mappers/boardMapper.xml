@@ -54,6 +54,18 @@ from musteat_jokbal;
 
 </update>
 
+<!-- 게시물 조회 -->
+<select id="jokbal_view" parameterType="int" resultType="com.board.domain.BoardVO">
+
+ select 
+		bno,name,phone,address,message,viewCnt
+from 
+		musteat_jokbal
+ where
+ 		bno = #{bno}   
+  
+</select>
+
 
 
 

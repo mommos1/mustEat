@@ -14,7 +14,7 @@
     	
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content />
+        <meta name="description"content />
         <meta name="author" content />
         <title>맛집 제보</title>
         <!-- Favicon-->
@@ -146,13 +146,13 @@
                 </ol>
                 <!-- Content Row-->
                 <div class="row">
-                    <!-- Map Column-->
+                    <!-- Map Column -->
                      <div class="col-lg-8 mb-4">
                         구글맵 Map
                         <iframe style="width: 100%; height: 400px; border: 0" src="https://map.naver.com/v5/directions/-/-/-/transit?c=14172953.7846374,4354158.8792368,7,0,0,0,dh"></iframe>
                     </div> 
-                    <!-- Contact Details Column-->
-                    <!-- <div class="col-lg-4 mb-4">
+                    <!-- Contact Details Column -->
+                    <div class="col-lg-4 mb-4">
                         <h2>목원대학교<small>(임시)</small></h2>
                         <p>
                             - 공과대학 D관
@@ -173,14 +173,14 @@
                             <abbr title="Hours">H</abbr>
                             : 월요일 - 금요일 9:00 ~ 17:00 
                         </p>
-                    </div> -->
-                </div>
+                    </div>
+                </div> 
                 <!-- Contact Form-->
                 <!-- In order to set the email address and subject line for the contact form go to the assets/mail/contact_me.php file.-->
-                <div class="row">
-                    <div class="col-lg-8 mb-4">
-                        <h3>나만의 맛집을 추천해주세요!</h3>
-                        <!-- <form id="contactForm" name="sentMessage" novalidate> -->
+          <div class="row">
+                 <div class="col-lg-8 mb-4">
+	                        <h3>나만의 맛집을 추천해주세요!</h3>
+	                        <!-- <form id="contactForm" name="sentMessage" novalidate> -->
                             <div class="control-group form-group">
                                 <div class="controls">
                                      
@@ -216,7 +216,7 @@
                         
                     </div>
                 </div>
-            </div>
+            </div>   
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">

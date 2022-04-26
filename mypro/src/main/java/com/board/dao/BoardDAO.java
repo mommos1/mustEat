@@ -14,4 +14,6 @@ public interface BoardDAO {
 	
 	public void contact(BoardVO vo) throws Exception;
 	
+	public BoardVO jokbal_view(int bno) throws Exception;
+	
 }

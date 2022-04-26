@@ -38,19 +38,23 @@ public class BoardServicelmpl implements BoardService {
 		
 		if(res > 0) {
 			msg = "Success";
-		}
-		
+		}		
 		
 		return msg;
 	}
-
-
 
 	@Override
 	public void contact(BoardVO vo) throws Exception {
 		
 		dao.contact(vo);
 		
+	}
+
+
+
+	@Override
+	public BoardVO jokbal_view(int bno) throws Exception {
+		return dao.jokbal_view(bno);
 	}
 
 }

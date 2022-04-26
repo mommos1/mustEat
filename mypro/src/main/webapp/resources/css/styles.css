@@ -573,8 +573,7 @@ pre code {
 }
 .row {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
 }

@@ -44,6 +44,13 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+
+	@Override
+	public BoardVO jokbal_view(int bno) throws Exception {
+		
+		return sql.selectOne(namespace + ".jokbal_view", bno);
+	}
+
 }
 
 
