@@ -1,6 +1,7 @@
 package com.gjwnsqja.mokwon;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.board.domain.BoardVO;
 import com.board.service.BoardService;
 
 @Controller
@@ -23,15 +25,37 @@ private static final org.slf4j.Logger logger = LoggerFactory.getLogger(BoardCont
 @Inject
 BoardService service;
 
- @RequestMapping(value = "/list", method = RequestMethod.GET)
+ @RequestMapping(value = "/jokbal", method = RequestMethod.GET)
  public void getList(Model model) throws Exception {
 	 
 	 	List list = null;
-	 	list = service.list();	
+	 	list = service.list();
 	 	System.out.println(list.toString());
 	 	model.addAttribute("list",list);
    
  }
+ 
+ 
+ @RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public void getContact() throws Exception {}
+ 
+ @RequestMapping(value = "/contact", method = RequestMethod.POST)
+	public String posttContact(BoardVO vo) throws Exception {
+	 
+	 service.contact(vo);
+	 return "redirect:/board/contact";
+	 
+ }
+ 
+ @RequestMapping(value = "/nightEat/jokbal", method = RequestMethod.GET)
+	public void getJokbal(Model model) throws Exception {
+	 
+	 List list = null;
+	 	list = service.list();
+	 	System.out.println(list.toString());
+	 	model.addAttribute("list",list);
+		
+	}
 
 
 }

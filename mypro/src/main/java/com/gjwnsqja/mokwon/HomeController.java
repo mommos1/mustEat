@@ -21,67 +21,39 @@ import com.board.service.BoardService;
  */
 @Controller
 public class HomeController {
-	
-	
-@Inject
-BoardService service;
 
-	
+	@Inject
+	BoardService service;
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "contact";
+		return "index";
 	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/message.do", method = RequestMethod.GET)
-	public String homeMessage(@RequestParam Map<String, Object> map) throws Exception {
-		
-		
-		// Map, List   -  Collection? 
-		
-		
-		System.out.println("여기오냐? : " + map.toString());
-		
-		String msg = service.boardMessage(map);
-		
-		System.out.println("Controller msg : " + msg);
-		
-		return msg;
-		
-	}
-	
 
-	 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String contact(Locale locale, Model model) {
-		
-		
-		return "board/home";
-	}
-	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "/message.do", method = RequestMethod.GET) public
+	 * String homeMessage(@RequestParam Map<String, Object> map) throws Exception {
+	 * 
+	 * 
+	 * // Map, List - Collection?
+	 * 
+	 * 
+	 * System.out.println("여기오냐? : " + map.toString());
+	 * 
+	 * String msg = service.boardMessage(map);
+	 * 
+	 * System.out.println("Controller msg : " + msg);
+	 * 
+	 * return msg;
+	 * 
+	 * }
+	 */
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

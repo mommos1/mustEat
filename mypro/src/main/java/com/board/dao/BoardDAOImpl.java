@@ -25,6 +25,7 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectList(namespace + ".list");
 	}
 
+	
 	// 피드백 Insert
 	@Override
 	public int boardMessage(Map<String, Object> map) throws Exception {
@@ -32,6 +33,14 @@ public class BoardDAOImpl implements BoardDAO {
 		System.out.println("Dao : " + map.toString());
 		
 		return sql.update(namespace + ".insertBoardMessage", map);
+		
+	}
+
+
+	@Override
+	public void contact(BoardVO vo) throws Exception {
+		
+		sql.insert(namespace + ".contact", vo);
 		
 	}
 

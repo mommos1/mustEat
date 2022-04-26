@@ -44,4 +44,13 @@ public class BoardServicelmpl implements BoardService {
 		return msg;
 	}
 
+
+
+	@Override
+	public void contact(BoardVO vo) throws Exception {
+		
+		dao.contact(vo);
+		
+	}
+
 }

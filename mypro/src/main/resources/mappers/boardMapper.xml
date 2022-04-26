@@ -4,16 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.mappers.board">
 
-	<!-- 게시물 목록 -->
+<!--  게시물 목록 -->
 <select id="list" resultType="com.board.domain.BoardVO">
  		select
-  			bno, title, content, writer, regDate, viewCnt
- 		from tbl_board
+	bno, name, phone, address, message, viewCnt
+from musteat_jokbal;
 </select>
+
+<!-- 게시물 작성 -->
+<insert id="contact" parameterType="com.board.domain.BoardVO">
+ insert into
+  musteat_jokbal(name, phone, address, message)
+   values(#{name}, #{phone}, #{address}, #{message})
+</insert>
 
 <update id="insertBoardMessage" parameterType="hashmap">
 
-			INSERT INTO `board`.`board_message`
+			<!-- INSERT INTO `board`.`board_message`
 				(`name`,
 				`phone`,
 				`email`,
@@ -25,6 +32,23 @@
 				(#{name},
 				#{phone},
 				#{email},
+				#{message},
+				'0') -->
+				
+				INSERT INTO `board`.`musteat_list`
+				(`bno`,
+				`name`,
+				`phone`,
+				`address`,
+				`message`,
+				`viewCnt`)
+			
+			VALUES
+			
+				(#{bno}
+				#{name},
+				#{phone},
+				#{address},
 				#{message},
 				'0')
 

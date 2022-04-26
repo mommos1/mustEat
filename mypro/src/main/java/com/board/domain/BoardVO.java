@@ -5,10 +5,10 @@ import java.util.Date;
 public class BoardVO {
 	
 	private int bno;
-	private String title;
-	private String content;
-	private String writer;
-	private Date regDate;
+	private String name;
+	private String phone;
+	private String address;
+	private String message;
 	private int viewCnt;
 	
 	public int getBno() {
@@ -17,29 +17,29 @@ public class BoardVO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getContent() {
-		return content;
+	public String getPhone() {
+		return phone;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getWriter() {
-		return writer;
+	public String getAddress() {
+		return address;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public String getMessage() {
+		return message;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	public int getViewCnt() {
 		return viewCnt;
@@ -47,5 +47,5 @@ public class BoardVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-
+	
 }

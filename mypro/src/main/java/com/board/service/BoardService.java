@@ -13,4 +13,6 @@ public interface BoardService {
 	// 피드백 Insert
 	public String boardMessage(Map<String, Object> map) throws Exception;
 	
+	public void contact(BoardVO vo) throws Exception;
+	
 }
