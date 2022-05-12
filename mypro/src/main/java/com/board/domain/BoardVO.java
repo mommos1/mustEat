@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 	
+	//족발 게시물 등 
 	private int bno;
 	private String name;
 	private String phone;
@@ -11,6 +12,23 @@ public class BoardVO {
 	private String message;
 	private int viewCnt;
 	
+	//게시물 댓글
+	private String content;
+	private Date regDate;
+	
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 	public int getBno() {
 		return bno;
 	}

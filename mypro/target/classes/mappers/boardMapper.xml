@@ -19,21 +19,6 @@ from musteat_jokbal;
 </insert>
 
 <update id="insertBoardMessage" parameterType="hashmap">
-
-			<!-- INSERT INTO `board`.`board_message`
-				(`name`,
-				`phone`,
-				`email`,
-				`message`,
-				`board_messagecol`)
-			
-			VALUES
-			
-				(#{name},
-				#{phone},
-				#{email},
-				#{message},
-				'0') -->
 				
 				INSERT INTO `board`.`musteat_list`
 				(`bno`,
@@ -66,6 +51,32 @@ from
   
 </select>
 
+<update id="jokbal_modify" parameterType="com.board.domain.BoardVO" >
+
+ update musteat_jokbal
+  set
+   name = #{name},
+   phone = #{phone},
+   address = #{address},
+   message = #{message}
+  where bno = #{bno}
+  
+</update>
+
+<!-- 댓글작성 -->
+<insert id="jokbal_commentwrite" parameterType="com.board.domain.BoardVO">
+ insert into
+  musteat_comment(name, content)
+   values(#{name}, #{content})
+</insert>
+
+<!-- 댓글보기 -->
+<select id="jokbal_comment" resultType="com.board.domain.BoardVO">
+
+select
+		bno,name,content,regDate
+ from musteat_comment;
+</select>
 
 
 

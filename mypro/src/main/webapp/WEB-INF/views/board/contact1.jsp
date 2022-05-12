@@ -153,7 +153,7 @@
                     </div> 
                     <!-- Contact Details Column -->
                     <div class="col-lg-4 mb-4">
-                        <h2>목원대학교<small>(임시)</small></h2>
+                        <h2>Must Eat<small></small></h2>
                         <p>
                             - 공과대학 D관
                             <br />
@@ -161,17 +161,13 @@
                             <br />
                         </p>
                         <p>
-                            <abbr title="Phone">P</abbr>
-                            : 010-2232-4091
+                            P : 010-2232-4091
                         </p>
                         <p>
-                            <abbr title="Email">E</abbr>
-                            :
-                            <a href="letsko5@gmail.com">letsko5@gmail.com</a>
+                            E : letsko5@gmail.com
                         </p>
                         <p>
-                            <abbr title="Hours">H</abbr>
-                            : 월요일 - 금요일 9:00 ~ 17:00 
+                            H : 월요일 - 금요일 9:00 ~ 17:00 
                         </p>
                     </div>
                 </div> 

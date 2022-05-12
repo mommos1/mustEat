@@ -21,7 +21,6 @@ public class BoardDAOImpl implements BoardDAO {
 	//게시물 목록
 	@Override
 	public List<BoardVO> list() throws Exception {
-		// TODO Auto-generated method stub
 		return sql.selectList(namespace + ".list");
 	}
 
@@ -36,7 +35,6 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
-
 	@Override
 	public void contact(BoardVO vo) throws Exception {
 		
@@ -44,11 +42,31 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
-
 	@Override
-	public BoardVO jokbal_view(int bno) throws Exception {
+	public BoardVO jokbal_view( int bno) throws Exception {
 		
 		return sql.selectOne(namespace + ".jokbal_view", bno);
+	}
+	
+	//게시물 내 후기
+	@Override
+	public void jokbal_commentwrite(BoardVO vo) throws Exception {
+		sql.insert(namespace + ".jokbal_commentwrite", vo);
+		
+	}
+
+	@Override
+	public void jokbal_modify(BoardVO vo) throws Exception {
+		
+		sql.update(namespace + ".jokbal_modify", vo);
+		
+	}
+
+	@Override
+	public List<BoardVO> jokbal_comment() throws Exception {
+		
+		return sql.selectList(namespace + ".jokbal_comment");
+		
 	}
 
 }
