@@ -25,4 +25,7 @@ public interface BoardService {
 	//게시물 수정
 	public void modify(BoardVO vo) throws Exception;
 	
+	//회원가입
+	public void memberJoin(BoardVO vo)throws Exception;
+	
 }

@@ -29,6 +29,7 @@ BoardService service;
  @RequestMapping(value = "/jokbal", method = RequestMethod.GET)
  public void getList(Model model) throws Exception {
 	 
+	 logger.info("족발 페이지 진입");
 	 	List list = null;
 	 	list = service.list();
 	 	System.out.println(list.toString());
@@ -37,7 +38,7 @@ BoardService service;
  
  
  @RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public void getContact() throws Exception {}
+	public void getContact() throws Exception {logger.info("매장등록 페이지 진입");}
  
  @RequestMapping(value = "/contact", method = RequestMethod.POST)
 	public String posttContact(BoardVO vo) throws Exception {
@@ -98,19 +99,25 @@ BoardService service;
  
  	//회원가입 페이지 이동
 	@RequestMapping(value = "/sighup", method = RequestMethod.GET)
-	public void loginGET() {
+	public void sighupGET() {
 		
 		logger.info("회원가입 페이지 진입");
 		
 	}
 	
-	//로그인 페이지 이동
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void joinGET() {
+	//회원가입 진행
+	@RequestMapping(value = "/sighup", method = RequestMethod.POST)
+	public String sighupPOST(BoardVO vo)throws Exception {
 		
-		logger.info("로그인 페이지 진입");
+		service.memberJoin(vo);
+		logger.info("회원가입 완료");
+		return "redirect:/board/login";
 		
 	}
+	
+	//로그인 페이지 이동
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void joinGET() {	logger.info("로그인 페이지 진입"); }
 
 
 }

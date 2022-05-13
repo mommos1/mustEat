@@ -135,7 +135,7 @@
                 </div>                                                       
         </section>
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br>16 황지훈 17 허준범, 17 오병주 17김시헌 18 박영주 18 서해주</p></div>
+            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br>15 황지훈 17 허준범, 17 오병주 17김시헌 18 박영주 18 서해주</p></div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>

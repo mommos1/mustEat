@@ -78,6 +78,22 @@ select
  from musteat_comment;
 </select>
 
+<!-- 회원가입 정보발송 -->
+<insert id="memberJoin" parameterType="com.board.domain.BoardVO">
 
+  		insert into musteat_member (memberId, memberPw, memberName, memberMail, memberAddr1, memberAddr2, memberAddr3,regDate, adminCk, money, point)
+  			values(#{memberId}, #{memberPw},
+  		 	#{memberName}, #{memberMail}, #{memberAddr1},
+  		  	#{memberAddr2}, #{memberAddr3},sysdate(), 0, 100000, 5000 )
 
+  	</insert>
+  	
+<!-- 로그인 회원정보 확인 -->
+<select id="memberLogin" resultType="com.board.domain.BoardVO">
+      
+         select 
+         		memberId, memberName, adminck, money, point 
+         		from musteat_member where memberId = #{memberId} and memberPw = #{memberPw}
+      
+      </select>
 </mapper>

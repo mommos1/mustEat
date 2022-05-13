@@ -5,10 +5,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.board.domain.BoardVO;
 import com.board.dao.BoardDAO;
+
 
 @Service
 public class BoardServicelmpl implements BoardService {
@@ -72,6 +74,11 @@ public class BoardServicelmpl implements BoardService {
 		dao.jokbal_commentwrite(vo);
 		
 	}
-
+	
+	@Override
+	public void memberJoin(BoardVO vo) throws Exception {
+		dao.memberJoin(vo);
+		
+	}
 
 }

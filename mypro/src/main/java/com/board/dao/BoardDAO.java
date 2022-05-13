@@ -26,5 +26,8 @@ public interface BoardDAO {
 	//게시물 후기작성
 	public void jokbal_commentwrite(BoardVO vo) throws Exception;
 	
+	//회원가입
+	public void memberJoin(BoardVO vo)throws Exception;
+	
 	
 }

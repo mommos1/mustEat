@@ -52,7 +52,6 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void jokbal_commentwrite(BoardVO vo) throws Exception {
 		sql.insert(namespace + ".jokbal_commentwrite", vo);
-		
 	}
 
 	@Override
@@ -66,6 +65,13 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> jokbal_comment() throws Exception {
 		
 		return sql.selectList(namespace + ".jokbal_comment");
+		
+	}
+
+	//회원가입
+	@Override
+	public void memberJoin(BoardVO vo) throws Exception {
+		sql.insert(namespace + ".memberJoin", vo);
 		
 	}
 

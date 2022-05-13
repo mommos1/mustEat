@@ -32,6 +32,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		logger.info("메인 페이지 진입");
 		return "index";
 	}
 
