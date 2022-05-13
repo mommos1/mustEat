@@ -5,16 +5,21 @@ import java.util.Locale;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.domain.BoardVO;
 import com.board.service.BoardService;
+import com.board.dao.BoardDAO;
 
 @Controller
 @RequestMapping("/board/*")
@@ -24,6 +29,7 @@ public class BoardController {
 private static final org.slf4j.Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 @Inject
+
 BoardService service;
 
  @RequestMapping(value = "/jokbal", method = RequestMethod.GET)
@@ -97,27 +103,55 @@ BoardService service;
   return "redirect:/board/nightEat/jokbal_view?bno=" + vo.getBno();
  }
  
- 	//회원가입 페이지 이동
+ 	//회원가입 GET
 	@RequestMapping(value = "/sighup", method = RequestMethod.GET)
-	public void sighupGET() {
+	public void sighupGET() throws Exception{
 		
 		logger.info("회원가입 페이지 진입");
 		
 	}
 	
-	//회원가입 진행
+	//회원가입 POST
 	@RequestMapping(value = "/sighup", method = RequestMethod.POST)
 	public String sighupPOST(BoardVO vo)throws Exception {
 		
-		service.memberJoin(vo);
-		logger.info("회원가입 완료");
-		return "redirect:/board/login";
+		  service.memberJoin(vo); 
+		  logger.info("회원가입 완료"); 
+		  return "redirect:/board/login";
 		
 	}
 	
 	//로그인 페이지 이동
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void joinGET() {	logger.info("로그인 페이지 진입"); }
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String joinPOST(HttpServletRequest req,BoardVO vo, RedirectAttributes rttr)throws Exception {	
+		
+		BoardVO lvo = service.login(vo);
+		HttpSession session = req.getSession();
+		logger.info(""+vo);
+		logger.info(""+lvo);
+		
+		if(lvo == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
+            
+            int result = 0;
+            rttr.addFlashAttribute("result", result);
+            logger.info("로그인 실패");
+            return "redirect:/board/login";
+            
+        }
+        
+        session.setAttribute("vo", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+        
+        logger.info(""+lvo);
+        
+        return "redirect:/";
+        
+		
+	}
+
+
 
 
 }

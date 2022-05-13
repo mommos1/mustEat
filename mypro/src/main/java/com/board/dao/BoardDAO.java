@@ -29,5 +29,8 @@ public interface BoardDAO {
 	//회원가입
 	public void memberJoin(BoardVO vo)throws Exception;
 	
+	//로그인
+	public BoardVO login(BoardVO vo)throws Exception;
+
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,9 +76,23 @@ public class BoardServicelmpl implements BoardService {
 		
 	}
 	
+	//회원가입
 	@Override
 	public void memberJoin(BoardVO vo) throws Exception {
 		dao.memberJoin(vo);
+		
+	}
+
+	//로그인
+	@Override
+	public BoardVO login(BoardVO vo) throws Exception {
+		return dao.login(vo);
+	}
+
+	//로그아웃
+	@Override
+	public void logout(HttpSession session) throws Exception {
+		session.invalidate();
 		
 	}
 

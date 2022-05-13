@@ -71,8 +71,13 @@ public class BoardDAOImpl implements BoardDAO {
 	//회원가입
 	@Override
 	public void memberJoin(BoardVO vo) throws Exception {
-		sql.insert(namespace + ".memberJoin", vo);
-		
+		sql.insert(namespace + ".memberJoin", vo);	
+	}
+
+
+	@Override
+	public BoardVO login(BoardVO vo) throws Exception {
+		return sql.selectOne(namespace + ".memberLogin", vo);
 	}
 
 }

@@ -3,6 +3,8 @@ package com.board.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.board.domain.BoardVO;
 
 public interface BoardService {
@@ -27,5 +29,12 @@ public interface BoardService {
 	
 	//회원가입
 	public void memberJoin(BoardVO vo)throws Exception;
+	
+	//로그인
+	public BoardVO login(BoardVO vo)throws Exception;
+	
+	//로그아웃
+	public void logout(HttpSession session)throws Exception;
+	
 	
 }
