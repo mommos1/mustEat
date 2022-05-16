@@ -7,6 +7,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 	<meta charset="UTF-8">      <!-- utf-8 인코딩 -->  
 	<title>Must_EAT</title>
 	<link rel="stylesheet" href="../../../resources/css/main.css">   <!-- main.css 가 연결되어있다-->
@@ -77,14 +81,19 @@
 				</li>
 	</ul>
 
+<c:if test="${memberLogin == null}">
 	<div class="search"> 
-
-		<h1>
-			<input type="text" placeholder="Must-Eat 검색">
-			<button> 검색
-		</h1>
-
+		<a href="board/login" style="color:#fff;">로그인${memberLogin.userName }<br></a>
+		<a href="board/sighup" style="color:#fff;">회원가입<br></a>
 	</div>	
+</c:if>
+
+<c:if test="${memberLogin != null}">
+	<div class="search"> 
+		<span style="color:#fff;">${memberLogin.userName } 님 환영합니다.<br></span>
+		<span style="color:#fff;">로그아웃<br></span>
+	</div>	
+</c:if>
 
 	</div>
 </header>
