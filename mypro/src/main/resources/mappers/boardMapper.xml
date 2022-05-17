@@ -66,16 +66,17 @@ from
 <!-- 댓글작성 -->
 <insert id="jokbal_commentwrite" parameterType="com.board.domain.BoardVO">
  insert into
-  musteat_comment(name, content)
-   values(#{name}, #{content})
+  musteat_comment(name, content, commentId)
+   values(#{name}, #{content}, #{commentId})
 </insert>
 
 <!-- 댓글보기 -->
 <select id="jokbal_comment" resultType="com.board.domain.BoardVO">
 
 select
-		bno,name,content,regDate
+		bno,name,content,regDate,commentId
  from musteat_comment;
+
 </select>
 
 <!-- 회원가입 정보발송 -->

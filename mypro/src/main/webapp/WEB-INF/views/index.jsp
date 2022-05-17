@@ -1,7 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -74,24 +72,31 @@
 		        <li><a href="#">고객지원</a>
 					<ul class="inner">
 						<li><a href="#"><span>고객문의</span></a></li>
-						<li><a href="/board/login"><span>로그인</span></a></li>
-						<li><a href="/board/sighup"><span>회원가입</span></a></li>
-						<li><a href="/board/contact"><span>맛집제보</span></a></li>
+						
+						<c:if test="${memberLogin.verify == 9 }">
+						<li><a href="/board/contact"><span>맛집등록</span></a></li>
+						</c:if>
+						
 					</ul>
 				</li>
 	</ul>
 
 <c:if test="${memberLogin == null}">
 	<div class="search"> 
-		<a href="board/login" style="color:#fff;">로그인${memberLogin.userName }<br></a>
+		<a href="board/login" style="color:#fff;">로그인<br></a>
 		<a href="board/sighup" style="color:#fff;">회원가입<br></a>
 	</div>	
 </c:if>
 
 <c:if test="${memberLogin != null}">
 	<div class="search"> 
-		<span style="color:#fff;">${memberLogin.userName } 님 환영합니다.<br></span>
-		<span style="color:#fff;">로그아웃<br></span>
+	
+	<c:if test="${memberLogin.verify == 9 }">
+		<span style="color:#fff;">관리자 계정<br></span>
+	</c:if>
+	
+		<span style="color:#fff;">${memberLogin.userName } 님 환영합니다. <br></span>
+		<span style="color:#fff;"><a href="/board/logout">로그아웃</a><br></span>
 	</div>	
 </c:if>
 

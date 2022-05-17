@@ -142,13 +142,21 @@ BoardService service;
             
         }
         
-        session.setAttribute("vo", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+        session.setAttribute("memberLogin", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
         
         logger.info(""+lvo);
         
-        return "redirect:/";
-        
-		
+        return "redirect:/";   		
+	}
+	
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String signout(HttpSession session) throws Exception {
+	 logger.info("get logout");
+	 
+	 service.logout(session);
+	   
+	 return "redirect:/";
 	}
 
 

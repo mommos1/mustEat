@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description"content />
         <meta name="author" content />
-        <title>맛집 제보</title>
+        <title>맛집 등록</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <script src=""https://use.fontawesome.com/releases/v5.15.3/js/all.js"" crossorigin="anonymous"></script>
         <link href="../../../resources/css/styles.css" rel="stylesheet" type="text/css">
@@ -95,12 +95,12 @@
             <div class="container">
                 <!-- Page Heading/Breadcrumbs-->
                 <h2>
-                   맛집 제보
+                   맛집 등록
                     <small></small>
                 </h2>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">맛집 제보</li>
+                    <li class="breadcrumb-item active">맛집 등록</li>
                 </ol>
                 <!-- Content Row-->
                 <div class="row">
