@@ -120,7 +120,7 @@
                           <br><br><br><br><br><br>
                           
                          <c:if test="${memberLogin.verify == 9 }"> 
-                          <a href="/board/nightEat/jokbal_modify?bno=${jokbal_view.bno}">게시물 수정하기</a>       
+                          <a href="/board/nightEat/night_modify?bno=${jokbal_view.bno}">게시물 수정하기</a>       
                           </c:if> 
                                             
                         <p>

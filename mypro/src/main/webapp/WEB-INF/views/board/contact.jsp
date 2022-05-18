@@ -115,7 +115,23 @@
                     <div class="col-lg-4 mb-4">
                     
                     <!-- 맛집사이트 입력받음 -->
-                    <form method="post">
+                    <form method="post" id="data">
+                    
+                    	<label>맛집 종류</label>
+                    	
+						 <select name="category">
+							 <option value="1">족발</option>
+							 <option value="2">치킨</option>
+							 <option value="3">피자</option>
+							 <option value="4">닭발</option>
+							 <option value="5">막창/곱창</option>
+							 <option value="6">한식</option>
+							 <option value="7">중식</option>
+							 <option value="8">일식</option>
+							 <option value="9">양식</option>
+							 <option value="10">카페/디저트</option>
+						 </select>
+                    
                         <input class="form-control" name="name" type="text" placeholder="맛집명을 입력해주세요" />
                                     <p class="help-block"></p>
                         <p>
@@ -128,7 +144,7 @@
 							<textarea class="form-control" name="message" rows="10" cols="100" placeholder="맛집에 대해 설명해주세요." maxlength="999" style="resize: none"></textarea>
                         </p>
                         <button class="btn btn-primary" id="sendMessageButton" type="submit" >등록하기</button>
-                        </form>
+                    </form>
                         
                         
                     </div>

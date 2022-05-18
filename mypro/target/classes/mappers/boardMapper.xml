@@ -7,15 +7,15 @@
 <!--  게시물 목록 -->
 <select id="list" resultType="com.board.domain.BoardVO">
  		select
-	bno, name, phone, address, message, viewCnt
-from musteat_jokbal;
+	bno, name, phone, address, message, viewCnt, category
+from musteat_night;
 </select>
 
 <!-- 게시물 작성 -->
 <insert id="contact" parameterType="com.board.domain.BoardVO">
  insert into
-  musteat_jokbal(name, phone, address, message)
-   values(#{name}, #{phone}, #{address}, #{message})
+  musteat_night(name, phone, address, message, category)
+   values(#{name}, #{phone}, #{address}, #{message}, #{category})
 </insert>
 
 <update id="insertBoardMessage" parameterType="hashmap">
@@ -45,7 +45,7 @@ from musteat_jokbal;
  select 
 		bno,name,phone,address,message,viewCnt
 from 
-		musteat_jokbal
+		musteat_night
  where
  		bno = #{bno}   
   
@@ -53,7 +53,7 @@ from
 
 <update id="jokbal_modify" parameterType="com.board.domain.BoardVO" >
 
- update musteat_jokbal
+ update musteat_night
   set
    name = #{name},
    phone = #{phone},

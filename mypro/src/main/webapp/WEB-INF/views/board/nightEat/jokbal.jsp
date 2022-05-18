@@ -99,6 +99,7 @@
                 <!-- Blog Post-->
                 
               <c:forEach items="${list}" var="list">
+              	<c:if test="${list.category == 1 }">
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">
@@ -110,7 +111,7 @@
                             <div class="col-lg-6">
                                 <h2 class="card-title">${list.name}</h2>
                                 <p class="card-text">${list.message} </p>
-                                <a class="btn btn-primary" href="/board/nightEat/jokbal_view?bno=${list.bno}">맛집 보기 →</a>
+                                <a class="btn btn-primary" href="/board/nightEat/night_view?bno=${list.bno}">맛집 보기 →</a>
                             </div>
                 
                
@@ -121,6 +122,7 @@
                         
                     </div>
                 </div>
+                </c:if>
               </c:forEach>                     
                 
                 <!-- Pagination-->

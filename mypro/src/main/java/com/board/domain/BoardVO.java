@@ -12,7 +12,8 @@ public class BoardVO {
 	private String message;
 	private int viewCnt;
 	private int commentId;
-
+	private String category;
+	
 	//게시물 댓글
 	private String content;
 	private Date regDate;
@@ -41,6 +42,14 @@ public class BoardVO {
 	private Date regiDate;
 	private int verify;
 	
+	
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public int getCommentId() {
 		return commentId;
 	}

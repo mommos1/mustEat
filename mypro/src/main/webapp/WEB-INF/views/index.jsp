@@ -62,10 +62,10 @@
 		        <li><a href="#">야식</a>
 					<ul class="inner">
 						<li><a href="/board/nightEat/jokbal"><span>족발/보쌈</span></a></li>
-						<li><a href="#"><span>치킨</span></a></li>
-						<li><a href="#"><span>피자</span></a></li>
-						<li><a href="#"><span>닭발</span></a></li>
-						<li><a href="#"><span>막창/곱창</span></a></li>
+						<li><a href="/board/nightEat/chicken"><span>치킨</span></a></li>
+						<li><a href="/board/nightEat/pizza"><span>피자</span></a></li>
+						<li><a href="/board/nightEat/chickenfeet"><span>닭발</span></a></li>
+						<li><a href="/board/nightEat/makchang"><span>막창/곱창</span></a></li>
 					</ul>
 				</li>
 

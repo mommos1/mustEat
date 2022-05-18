@@ -32,20 +32,20 @@ private static final org.slf4j.Logger logger = LoggerFactory.getLogger(BoardCont
 
 BoardService service;
 
- @RequestMapping(value = "/jokbal", method = RequestMethod.GET)
- public void getList(Model model) throws Exception {
-	 
-	 logger.info("족발 페이지 진입");
-	 	List list = null;
-	 	list = service.list();
-	 	System.out.println(list.toString());
-	 	model.addAttribute("list",list);  
- }
+	/*
+	 * @RequestMapping(value = "/night", method = RequestMethod.GET) public void
+	 * getList(Model model) throws Exception {
+	 * 
+	 * logger.info("족발 페이지 진입"); List list = null; list = service.list();
+	 * System.out.println(list.toString()); model.addAttribute("list",list); }
+	 */
  
  
  @RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public void getContact() throws Exception {logger.info("매장등록 페이지 진입");}
  
+ 
+ // 등록하기 버튼
  @RequestMapping(value = "/contact", method = RequestMethod.POST)
 	public String posttContact(BoardVO vo) throws Exception {
 	 
@@ -55,7 +55,7 @@ BoardService service;
  }
  
  //게시물 조회 댓글 조회
- @RequestMapping(value = "/nightEat/jokbal_view", method = RequestMethod.GET)
+ @RequestMapping(value = "/nightEat/night_view", method = RequestMethod.GET)
 	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
 	 
 	 	BoardVO vo = service.jokbal_view(bno);	 
@@ -68,7 +68,7 @@ BoardService service;
  }
  
  //게시물 댓글 포스트
- @RequestMapping(value = "/nightEat/jokbal_view", method = RequestMethod.POST)
+ @RequestMapping(value = "/nightEat/night_view", method = RequestMethod.POST)
 	public String postJokbal_comment(BoardVO vo) throws Exception {
 	 
 		service.jokbal_commentwrite(vo);
@@ -85,8 +85,48 @@ BoardService service;
 	 	model.addAttribute("list",list);		
 	}
  
+ //치킨 맛집 리스트
+ @RequestMapping(value = "/nightEat/chicken", method = RequestMethod.GET)
+	public void getChickenl(Model model) throws Exception {
+	 
+	 	List list = null;
+	 	list = service.list();
+	 	System.out.println(list.toString());
+	 	model.addAttribute("list",list);		
+	}
+ 
+//피자 맛집 리스트
+@RequestMapping(value = "/nightEat/pizza", method = RequestMethod.GET)
+	public void getPizza(Model model) throws Exception {
+	 
+	 	List list = null;
+	 	list = service.list();
+	 	System.out.println(list.toString());
+	 	model.addAttribute("list",list);		
+	}
+
+//닭발 맛집 리스트
+@RequestMapping(value = "/nightEat/chickenfeet", method = RequestMethod.GET)
+	public void getChickenfeet(Model model) throws Exception {
+	 
+	 	List list = null;
+	 	list = service.list();
+	 	System.out.println(list.toString());
+	 	model.addAttribute("list",list);		
+	}
+
+//막창 맛집 리스트
+@RequestMapping(value = "/nightEat/makchang", method = RequestMethod.GET)
+	public void getMakchang(Model model) throws Exception {
+	 
+	 	List list = null;
+	 	list = service.list();
+	 	System.out.println(list.toString());
+	 	model.addAttribute("list",list);		
+	}
+ 
  //게시물 수정
- @RequestMapping(value = "/nightEat/jokbal_modify", method = RequestMethod.GET)
+ @RequestMapping(value = "/nightEat/night_modify", method = RequestMethod.GET)
 	public void getJokbal_modify(@RequestParam("bno") int bno, Model model) throws Exception {
 	 
 	 BoardVO vo = service.jokbal_view(bno);
@@ -96,12 +136,12 @@ BoardService service;
  }
  
  //족발 맛집 수정
- @RequestMapping(value = "/nightEat/jokbal_modify", method = RequestMethod.POST)
+ @RequestMapping(value = "/nightEat/night_modify", method = RequestMethod.POST)
  public String postModify(BoardVO vo) throws Exception {
 
   service.modify(vo);
     
-  return "redirect:/board/nightEat/jokbal_view?bno=" + vo.getBno();
+  return "redirect:/board/nightEat/night_view?bno=" + vo.getBno();
  }
  
  	//회원가입 GET
