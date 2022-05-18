@@ -75,7 +75,8 @@ from
 
 select
 		bno,name,content,regDate,commentId
- from musteat_comment;
+ from musteat_comment
+ where commentId = #{bno}
 
 </select>
 

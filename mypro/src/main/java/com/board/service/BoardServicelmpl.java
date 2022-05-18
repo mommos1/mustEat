@@ -63,12 +63,14 @@ public class BoardServicelmpl implements BoardService {
 		
 	}
 
+	//게시물 후기 조회
 	@Override
-	public List<BoardVO> jokbal_comment() throws Exception {
+	public List<BoardVO> jokbal_comment(int bno) throws Exception {
 		
-		return dao.jokbal_comment();
+		return dao.jokbal_comment(bno);
 	}
 
+	//게시물 후기 작성
 	@Override
 	public void jokbal_commentwrite(BoardVO vo) throws Exception {
 		

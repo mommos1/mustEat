@@ -29,29 +29,29 @@
 
 /* 아이디 영역 */
 .id_wrap{
-	width: 100%;
-    margin-top: 20px;
+	width: 90%;
+    margin-top: 60px;
 }
 .id_name{
 	font-size: 25px;
     font-weight: bold;
 }
 .id_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 2px 14px;	
+	border: 2px solid black;
+	height:35px;
+		
 	
 }
 .id_input{
 	width:100%;
 	height:100%;
 	border:none;
-	font-size:18px;
+	font-size:15px;
 }
 
 /* 비밀번호 영역 */
 .pw_wrap{
-	width: 100%;
+	width: 90%;
     margin-top: 20px;
 }
 .pw_name{
@@ -59,9 +59,9 @@
     font-weight: bold;
 }
 .pw_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 2px 14px;	
+	border: 2px solid black;
+	height:35px;
+		
 	
 }
 .pw_input{
@@ -73,7 +73,7 @@
 
 /* 비밀번호 확인 영역 */
 .pwck_wrap{
-	width: 100%;
+	width: 90%;
     margin-top: 20px;
 }
 .pwck_name{
@@ -81,9 +81,9 @@
     font-weight: bold;
 }
 .pwck_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 2px 14px;
+	border: 2px solid black;
+	height:35px;
+	
 	
 }
 .pwck_input{
@@ -95,7 +95,7 @@
 
 /* 이름 영역 */
 .user_wrap{
-	width: 100%;
+	width: 90%;
     margin-top: 20px;
 }
 .user_name{
@@ -103,9 +103,9 @@
     font-weight: bold;
 }
 .user_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 2px 14px;
+	border: 2px solid black;
+	height:35px;
+	
 	
 }
 .user_input{
@@ -117,7 +117,7 @@
 
 /* 메일 영역 */
 .mail_wrap{
-	width: 100%;
+	width: 90%;
     margin-top: 20px;
 }
 .mail_name{
@@ -125,9 +125,9 @@
     font-weight: bold;
 }
 .mail_input_box{
-	border: 1px solid black;
+	border: 2px solid black;
 	height:31px;
-	padding: 2px 14px;
+
 	
 }
 .mail_input{
@@ -140,9 +140,9 @@
 	margin-top: 20px;	
 }
 .mail_check_input_box{
-	border: 1px solid black;
+	border: 2px solid black;
     height: 31px;
-    padding: 2px 14px;
+    
     width: 61%;
     float: left;
 }
@@ -153,7 +153,7 @@
 	font-size:18px;
 }
 .mail_check_button{
-    border: 1px solid black;
+    border: 2px solid black;
     height: 51px;
     width: 30%;
     float: right;
@@ -168,17 +168,18 @@
 /* 주소 영역 */
 .address_wrap{
 	width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .address_name{
 	font-size: 25px;
     font-weight: bold;
 }
 .address_input_1_box{
-	border: 1px solid black;
-    height: 31px;
-    padding: 2px 14px;
-    width: 61%;
+	border: 2px solid black;
+    height: 30px;
+	margin-top: 10px;
+   
+    width: 60%;
     float: left;	
 }
 .address_input_1{
@@ -188,7 +189,7 @@
 	font-size:18px;	
 }
 .address_button{
-    border: 1px solid black;
+    border: 2px solid black;
     height: 51px;
     width: 30%;
     float: right;
@@ -200,12 +201,12 @@
     cursor: pointer;	
 }
 .address_input_2_wrap{
-	margin-top: 20px;
+	margin-top: 55px;
 }
 .address_input_2_box{
-	border: 1px solid black;
+	border: 2px solid black;
 	height:31px;
-	padding: 2px 14px;	
+		
 	
 }
 .address_input_2{
@@ -216,12 +217,12 @@
 }
 
 .address_input_3_wrap{
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .address_input_3_box{
-	border: 1px solid black;
+	border: 2px solid black;
 	height:31px;
-	padding: 2px 14px;	
+	
 	
 }
 .address_input_3{

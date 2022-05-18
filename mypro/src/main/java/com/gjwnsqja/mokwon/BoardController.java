@@ -58,12 +58,11 @@ BoardService service;
  @RequestMapping(value = "/nightEat/jokbal_view", method = RequestMethod.GET)
 	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
 	 
-	 BoardVO vo = service.jokbal_view(bno);	 
-	 model.addAttribute("jokbal_view",vo);
+	 	BoardVO vo = service.jokbal_view(bno);	 
+	 	model.addAttribute("jokbal_view",vo);
 	 
 	 	List jokbal_comment = null;
-	 	jokbal_comment = service.jokbal_comment();
-	 	System.out.println(jokbal_comment.toString());
+	 	jokbal_comment = service.jokbal_comment(bno);
 	 	model.addAttribute("jokbal_comment",jokbal_comment);
 	 
  }
@@ -76,10 +75,11 @@ BoardService service;
 	 return "redirect:/board/nightEat/jokbal_view?bno=" + vo.getBno();	 
 } 
  
+ //족발 맛집 리스트
  @RequestMapping(value = "/nightEat/jokbal", method = RequestMethod.GET)
 	public void getJokbal(Model model) throws Exception {
 	 
-	 List list = null;
+	 	List list = null;
 	 	list = service.list();
 	 	System.out.println(list.toString());
 	 	model.addAttribute("list",list);		
@@ -95,6 +95,7 @@ BoardService service;
 	 
  }
  
+ //족발 맛집 수정
  @RequestMapping(value = "/nightEat/jokbal_modify", method = RequestMethod.POST)
  public String postModify(BoardVO vo) throws Exception {
 

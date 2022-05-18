@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -136,7 +137,10 @@
                             
                                 <form method="post">                             
                                 	<input class="form-control" type="text" name="name" placeholder="이름을 입력해주세요." /><br />                               
-                                    <div class="form-group"><textarea class="form-control" rows="3" name="content" placeholder="후기를 작성해주세요."></textarea></div>
+                                    <div class="form-group">
+                                    <textarea class="form-control" rows="3" name="content" placeholder="후기를 작성해주세요."></textarea>
+                                    </div>
+                                    <input type="hidden" name="commentId" value="${jokbal_view.bno}">
                                     <button class="btn btn-primary" type="submit">후기 남기기</button>
                                 </form>
                                 
@@ -145,16 +149,18 @@
                                                
                                                
                        <c:forEach items="${jokbal_comment}" var="jokbal_comment" >
+                       
                         <!-- Single Comment-->
                         <div class="media mb-4">
                             <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="..." />
                             <div class="media-body">
                                 <h5 class="mt-0">${jokbal_comment.name }</h5>
                                 ${jokbal_comment.content}<br>
-                                ${jokbal_comment.regDate }<br>                             
+                                <fmt:formatDate value="${jokbal_comment.regDate}" pattern="yyyy-MM-dd" />      <br>                  
                                 <a href="#">삭제</a> 
                             </div>
                         </div>      
+                        
                         </c:forEach>              
                    
         </section>

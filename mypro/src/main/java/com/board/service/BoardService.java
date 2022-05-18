@@ -19,10 +19,11 @@ public interface BoardService {
 	//게시물 조회
 	public BoardVO jokbal_view(int bno) throws Exception;
 	
-	//게시물 내 후기
+	//게시물 내 후기 작성
 	public void jokbal_commentwrite(BoardVO vo)throws Exception;
 	
-	public List<BoardVO> jokbal_comment() throws Exception;
+	//게시물 후기 조회
+	public List<BoardVO> jokbal_comment(int bno) throws Exception;
 	
 	//게시물 수정
 	public void modify(BoardVO vo) throws Exception;

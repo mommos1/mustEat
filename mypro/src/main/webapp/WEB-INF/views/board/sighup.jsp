@@ -21,9 +21,6 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src=""https://use.fontawesome.com/releases/v5.15.3/js/all.js"" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
-<!--         <link href="/css/style.css"  rel="stylesheet"  /> -->
-<!--         <link href="styles.css"  rel="stylesheet"  /> -->
         <link href="../../../resources/css/sighup.css" rel="stylesheet" type="text/css">  
         
     </head>
@@ -87,7 +84,7 @@
 			                        </div>
 			                    </div>
 			                    <div class="join_button_wrap">
-			                        <button type="submit" class="join_button">가입하기</button>>
+			                        <button type="submit" class="join_button">가입하기</button>
 			                    </div>
                     </form>
                 </div>

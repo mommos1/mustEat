@@ -21,7 +21,7 @@ public interface BoardDAO {
 	//게시물 수정
 	public void jokbal_modify(BoardVO vo) throws Exception;
 	
-	public List<BoardVO> jokbal_comment() throws Exception;
+	public List<BoardVO> jokbal_comment(int bno) throws Exception;
 	
 	//게시물 후기작성
 	public void jokbal_commentwrite(BoardVO vo) throws Exception;

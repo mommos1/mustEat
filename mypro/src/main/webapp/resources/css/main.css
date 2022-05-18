@@ -65,7 +65,7 @@ header {width: 100%; position: fixed; z-index: 100; background: #191a1a;}
 .innerHeader .logo a img:nth-child(2) {opacity: 0;}
 
 .search{
-position: absolute; left: 80%; top: 28px;
+position: absolute; left: 84%; top: 28px;
 }
 
 .search div{
