@@ -19,6 +19,7 @@ public class BoardServicelmpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 	
+	//맛집 리스트 
 	@Override
 	public List<BoardVO> list() throws Exception {
 		
@@ -26,23 +27,7 @@ public class BoardServicelmpl implements BoardService {
 		
 	}	
 
-	/*
-	 * @Override public String boardMessage(Map<String, Object> map) throws
-	 * Exception {
-	 * 
-	 * System.out.println("Service : " + map.toString());
-	 * 
-	 * int res = dao.boardMessage(map);
-	 * 
-	 * System.out.println("Service result : " + res);
-	 * 
-	 * String msg = "Fail";
-	 * 
-	 * if(res > 0) { msg = "Success"; }
-	 * 
-	 * return msg; }
-	 */
-
+	//맛집 등록
 	@Override
 	public void contact(BoardVO vo) throws Exception {
 		
@@ -50,13 +35,13 @@ public class BoardServicelmpl implements BoardService {
 		
 	}
 
+	//맛집 조회
 	@Override
 	public BoardVO jokbal_view(int bno) throws Exception {
 		return dao.jokbal_view(bno);
 	}
 	
 	//게시물 내 후기
-	
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		dao.jokbal_modify(vo);
@@ -95,6 +80,20 @@ public class BoardServicelmpl implements BoardService {
 	@Override
 	public void logout(HttpSession session) throws Exception {
 		session.invalidate();
+		
+	}
+
+	//맛집 삭제
+	@Override
+	public void delete(int bno) throws Exception {
+		dao.delete(bno);
+		
+	}
+
+	//댓글 삭제
+	@Override
+	public void delete_comment(int bno) throws Exception {
+		dao.delete_comment(bno);
 		
 	}
 

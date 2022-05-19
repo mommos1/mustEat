@@ -11,7 +11,6 @@
     	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     	
-    	
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description"content />
@@ -117,10 +116,12 @@
                         </p>
                         <p>
                             주소 : ${jokbal_view.address}
-                          <br><br><br><br><br><br>
+                          <br><br><br><br>
                           
                          <c:if test="${memberLogin.verify == 9 }"> 
-                          <a href="/board/nightEat/night_modify?bno=${jokbal_view.bno}">게시물 수정하기</a>       
+                          <a href="/board/nightEat/night_modify?bno=${jokbal_view.bno}">게시물 수정하기<br></a>  
+                          <a href="/board/nightEat/night_coupon?bno=${jokbal_view.bno}">쿠폰 관리<br><br></a>      
+                          <a href="/board/nightEat/night_delete?bno=${jokbal_view.bno}">맛집 삭제</a>
                           </c:if> 
                                             
                         <p>
@@ -130,12 +131,29 @@
                 </div>      
                 
                 <!-- Comments Form-->
+                
+                <!-- 맛집 글 설명부분 -->
                 ${jokbal_view.message}
                         <div class="card my-4">
                             <h5 class="card-header">후기를 남겨주세요!</h5>
                             <div class="card-body">
                             
-                                <form method="post">                             
+                                <form class="mb-3" name="myform" id="myform" method="post">       
+                                
+								    <fieldset>
+										<span class="text-bold">별점을 선택해주세요</span>
+										<input type="radio" name="reviewStar" value="5" id="rate1">
+										<label for="rate1">★</label>
+										<input type="radio" name="reviewStar" value="4" id="rate2">
+										<label for="rate2">★</label>
+										<input type="radio" name="reviewStar" value="3" id="rate3">
+										<label for="rate3">★</label>
+										<input type="radio" name="reviewStar" value="2" id="rate4">
+										<label for="rate4">★</label>
+										<input type="radio" name="reviewStar" value="1" id="rate5">
+										<label for="rate5">★</label>
+									</fieldset>
+                                                      
                                 	<input class="form-control" type="text" name="name" placeholder="이름을 입력해주세요." /><br />                               
                                     <div class="form-group">
                                     <textarea class="form-control" rows="3" name="content" placeholder="후기를 작성해주세요."></textarea>
@@ -150,22 +168,112 @@
                                                
                        <c:forEach items="${jokbal_comment}" var="jokbal_comment" >
                        
-                        <!-- Single Comment-->
-                        <div class="media mb-4">
-                            <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="..." />
-                            <div class="media-body">
-                                <h5 class="mt-0">${jokbal_comment.name }</h5>
-                                ${jokbal_comment.content}<br>
-                                <fmt:formatDate value="${jokbal_comment.regDate}" pattern="yyyy-MM-dd" />      <br>                  
-                                <a href="#">삭제</a> 
-                            </div>
-                        </div>      
+	                        <!-- Single Comment-->
+	                        <div class="media mb-4">
+	                            <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="..." />
+	                            <div class="media-body">
+	                                <h5 class="mt-0">${jokbal_comment.name }</h5>                            
+	                                
+	                                
+
+<!-- 							<script type="text/javascript">
+							
+									document.write("<form id='myform'>"); 
+									document.write("<fieldset>"); 
+									document.write("<div id='formStar'>"); 
+									document.write("<input type='radio' name='reviewStar'>"); 
+										
+										for(int i =0; i< ${jokbal_comment.reviewStar}; i++) {
+											document.write("'<label for='rate5'>★</label>"); 
+										}
+									
+									document.write("</div'>"); 
+									document.write("</fieldset>"); 
+									document.write("</form>"); 
+							
+							
+							   </script> -->
+							<c:if test="${jokbal_comment.reviewStar == 1 }">
+                             			<form id="myform">
+		                                	<fieldset>
+		                                		<div id="formStar">
+					                             	<input type="radio" name="reviewStar">
+														<label for="rate5">★</label>
+												</div>
+											</fieldset>
+		                                </form>
+		                    </c:if>               
+		                                
+		                     <c:if test="${jokbal_comment.reviewStar == 2 }">
+                             			<form id="myform">
+		                                	<fieldset>
+		                                		<div id="formStar">
+					                             	<input type="radio" name="reviewStar">
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+												</div>
+											</fieldset>
+		                                </form>
+		                    </c:if>
+		                    
+		                    <c:if test="${jokbal_comment.reviewStar == 3 }">
+                             			<form id="myform">
+		                                	<fieldset>
+		                                		<div id="formStar">
+					                             	<input type="radio" name="reviewStar">
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+												</div>
+											</fieldset>
+		                                </form>
+		                    </c:if>
+		                    
+		                    <c:if test="${jokbal_comment.reviewStar == 4 }">
+                             			<form id="myform">
+		                                	<fieldset>
+		                                		<div id="formStar">
+					                             	<input type="radio" name="reviewStar">
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+												</div>
+											</fieldset>
+		                                </form>
+		                    </c:if>
+		                    
+		                    <c:if test="${jokbal_comment.reviewStar == 5 }">
+                             			<form id="myform">
+		                                	<fieldset>
+		                                		<div id="formStar">
+					                             	<input type="radio" name="reviewStar">
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+														<label for="rate5">★</label>
+												</div>
+											</fieldset>
+		                                </form>
+		                    </c:if>
+		                    
+	                                
+	                                						${jokbal_comment.content}<br>
+	                                <fmt:formatDate value="${jokbal_comment.regDate}" pattern="yyyy-MM-dd" />      <br>   
+	                                
+	                         <c:if test="${memberLogin.verify == 9 }">             
+	                                <a href="/board/nightEat/night_deletecomment?bno=${jokbal_comment.bno}&&no=${jokbal_view.bno}">삭제</a> 
+	                         </c:if>
+	                         
+	                            </div>
+	                        </div>      
                         
-                        </c:forEach>              
+                        </c:forEach>                                  
                    
         </section>
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br>17 허준범, 17 오병주 </p></div>
+            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br></p></div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>

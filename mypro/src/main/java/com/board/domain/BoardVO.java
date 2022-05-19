@@ -11,9 +11,13 @@ public class BoardVO {
 	private String address;
 	private String message;
 	private int viewCnt;
+	private String reviewStar;
 	private int commentId;
 	private String category;
-	
+	private String coupon;
+	private String couponnum;
+	private String gdsThumbImg;
+
 	//게시물 댓글
 	private String content;
 	private Date regDate;
@@ -42,7 +46,32 @@ public class BoardVO {
 	private Date regiDate;
 	private int verify;
 	
+	public String getGdsThumbImg() {
+		return gdsThumbImg;
+	}
+	public void setGdsThumbImg(String gdsThumbImg) {
+		this.gdsThumbImg = gdsThumbImg;
+	}
 	
+	public String getReviewStar() {
+		return reviewStar;
+	}
+	public void setReviewStar(String reviewStar) {
+		this.reviewStar = reviewStar;
+	}
+	
+	public String getCoupon() {
+		return coupon;
+	}
+	public void setCoupon(String coupon) {
+		this.coupon = coupon;
+	}
+	public String getCouponnum() {
+		return couponnum;
+	}
+	public void setCouponnum(String couponnum) {
+		this.couponnum = couponnum;
+	}
 	
 	public String getCategory() {
 		return category;

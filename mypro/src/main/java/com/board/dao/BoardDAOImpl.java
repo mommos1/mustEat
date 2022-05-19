@@ -35,6 +35,7 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+	//맛집 등록
 	@Override
 	public void contact(BoardVO vo) throws Exception {
 		
@@ -42,12 +43,14 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+	//맛집보기
 	@Override
 	public BoardVO jokbal_view( int bno) throws Exception {
 		
 		return sql.selectOne(namespace + ".jokbal_view", bno);
 	}
 
+	//맛집 수정
 	@Override
 	public void jokbal_modify(BoardVO vo) throws Exception {
 		
@@ -55,10 +58,24 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 	
-	//게시물 내 후기 작성
+	//맛집 삭제
+	@Override
+	public void delete(int bno) throws Exception {
+		sql.delete(namespace + ".delete", bno);
+		
+	}
+	
+	//맛집 내 후기 작성
 	@Override
 	public void jokbal_commentwrite(BoardVO vo) throws Exception {
 		sql.insert(namespace + ".jokbal_commentwrite", vo);
+	}
+	
+	//맛집 후기 삭제
+	@Override
+	public void delete_comment(int bno) throws Exception {
+		sql.delete(namespace + ".delete_comment", bno);
+		
 	}
 
 	//게시물 후기 조회
@@ -80,6 +97,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardVO login(BoardVO vo) throws Exception {
 		return sql.selectOne(namespace + ".memberLogin", vo);
 	}
+
 
 }
 

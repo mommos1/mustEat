@@ -21,6 +21,12 @@
         <script src=""https://use.fontawesome.com/releases/v5.15.3/js/all.js"" crossorigin="anonymous"></script>
         <link href="../../../resources/css/styles.css" rel="stylesheet" type="text/css">
         
+        <style>
+        
+        .select_img img { margin:10px 0; }
+        
+        </style>
+        
     </head>
     
     <script type="text/javascript">      
@@ -105,8 +111,25 @@
                 <!-- Content Row-->
                 <div class="row">
                      <div class="col-lg-8 mb-4">
-                        <!-- 구글맵 Map -->
-                        <iframe style="width: 100%; height: 400px; border: 0" src="https://map.naver.com/v5/directions/-/-/-/transit?c=14172953.7846374,4354158.8792368,7,0,0,0,dh"></iframe>
+                     
+								 <label for="gdsImg">이미지를 선택해 주세요</label>
+								 <input type="file" id="gdsImg" name="file" />
+								 <div class="select_img"><img src="" /></div>
+								 
+								 <script>
+								 
+								  $("#gdsImg").change(function(){
+								   if(this.files && this.files[0]) {
+								    var reader = new FileReader;
+								    reader.onload = function(data) {
+								     $(".select_img img").attr("src", data.target.result).width(500);        
+								    }
+								    reader.readAsDataURL(this.files[0]);
+								   }
+								  });
+								  
+								 </script>
+								 <%=request.getRealPath("/") %>
                     </div> 
                     <!-- Contact Details Column -->
                     
@@ -151,7 +174,7 @@
                 </div>                                                       
         </section>
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br>15 황지훈 17 허준범, 17 오병주 17김시헌 18 박영주 18 서해주</p></div>
+            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br></p></div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>

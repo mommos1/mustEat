@@ -9,24 +9,29 @@ import com.board.domain.BoardVO;
 
 public interface BoardService {
 		
+	//맛집 리스트(jokbal_view 리스트 불러오기)
 	public List<BoardVO> list() throws Exception;	
 	
-	// 피드백 Insert
-	/* public String boardMessage(Map<String, Object> map) throws Exception; */
-	
+	//맛집 등록
 	public void contact(BoardVO vo) throws Exception;
 	
-	//게시물 조회
+	//맛집 조회
 	public BoardVO jokbal_view(int bno) throws Exception;
 	
-	//게시물 내 후기 작성
+	//맛집 내 후기 작성
 	public void jokbal_commentwrite(BoardVO vo)throws Exception;
 	
-	//게시물 후기 조회
+	//맛집 후기 조회
 	public List<BoardVO> jokbal_comment(int bno) throws Exception;
 	
-	//게시물 수정
+	//맛집 수정
 	public void modify(BoardVO vo) throws Exception;
+	
+	//맛집 삭제
+	public void delete(int bno) throws Exception;
+	
+	//댓글 삭제
+	public void delete_comment(int bno) throws Exception;
 	
 	//회원가입
 	public void memberJoin(BoardVO vo)throws Exception;

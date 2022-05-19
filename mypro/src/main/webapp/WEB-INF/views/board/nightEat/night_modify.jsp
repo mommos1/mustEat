@@ -131,7 +131,7 @@
                 </div>                                                       
         </section>
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br>17 허준범, 17 오병주 </p></div>
+            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br></p></div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>

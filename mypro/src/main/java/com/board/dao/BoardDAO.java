@@ -21,7 +21,13 @@ public interface BoardDAO {
 	//게시물 수정
 	public void jokbal_modify(BoardVO vo) throws Exception;
 	
+	//맛집 삭제
+	public void delete(int bno) throws Exception;
+	
+	//댓글작성
 	public List<BoardVO> jokbal_comment(int bno) throws Exception;
+	
+	public void delete_comment(int bno) throws Exception;
 	
 	//게시물 후기작성
 	public void jokbal_commentwrite(BoardVO vo) throws Exception;

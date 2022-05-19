@@ -54,7 +54,7 @@ BoardService service;
 	 
  }
  
- //게시물 조회 댓글 조회
+ //게시물 조회 댓글 조회 GET
  @RequestMapping(value = "/nightEat/night_view", method = RequestMethod.GET)
 	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
 	 
@@ -67,12 +67,12 @@ BoardService service;
 	 
  }
  
- //게시물 댓글 포스트
+ //게시물 댓글 작성 POST
  @RequestMapping(value = "/nightEat/night_view", method = RequestMethod.POST)
 	public String postJokbal_comment(BoardVO vo) throws Exception {
 	 
 		service.jokbal_commentwrite(vo);
-	 return "redirect:/board/nightEat/jokbal_view?bno=" + vo.getBno();	 
+	 return "redirect:/board/nightEat/night_view?bno=" + vo.getBno();	 
 } 
  
  //족발 맛집 리스트
@@ -143,6 +143,46 @@ BoardService service;
     
   return "redirect:/board/nightEat/night_view?bno=" + vo.getBno();
  }
+ 
+	//맛집 쿠폰 수정 GET
+	@RequestMapping(value = "/nightEat/night_coupon", method = RequestMethod.GET)
+		public void getJokbal_coupon(@RequestParam("bno") int bno, Model model) throws Exception {
+		 
+		 BoardVO vo = service.jokbal_view(bno);
+		 
+		 model.addAttribute("jokbal_view",vo);
+		 
+	}
+
+	//맛집 쿠폰 수정 POST
+	@RequestMapping(value = "/nightEat/night_coupon", method = RequestMethod.POST)
+	public String postCoupon(BoardVO vo) throws Exception {
+	
+	service.modify(vo);
+	  
+	return "redirect:/board/nightEat/night_view?bno=" + vo.getBno();
+	}
+	
+	//맛집 삭제
+	@RequestMapping(value = "/nightEat/night_delete", method = RequestMethod.GET)
+		public String getJokbal_delete(@RequestParam("bno") int bno) throws Exception {
+			 
+			service.delete(bno);
+			 
+			return "redirect:/";
+			 
+	}
+	
+	//댓글 삭제
+		@RequestMapping(value = "/nightEat/night_deletecomment", method = RequestMethod.GET)
+			public String getJokbal_deletecomment(@RequestParam("bno") int bno, @RequestParam("no") int no) throws Exception {
+				logger.info("댓글삭제 실행");
+				
+				 service.delete_comment(bno);
+				 
+				return "redirect:/board/nightEat/night_view?bno=" + no ;
+				 
+		}
  
  	//회원가입 GET
 	@RequestMapping(value = "/sighup", method = RequestMethod.GET)
