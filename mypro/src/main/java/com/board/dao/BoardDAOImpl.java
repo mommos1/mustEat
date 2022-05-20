@@ -91,6 +91,13 @@ public class BoardDAOImpl implements BoardDAO {
 	public void memberJoin(BoardVO vo) throws Exception {
 		sql.insert(namespace + ".memberJoin", vo);	
 	}
+	
+	//아이디 중복체크
+	@Override
+	public int idCheck(String id) throws Exception {
+		int cnt = sql.selectOne(namespace + ".idCheck", id);
+		return cnt;
+	}
 
 	//로그인
 	@Override

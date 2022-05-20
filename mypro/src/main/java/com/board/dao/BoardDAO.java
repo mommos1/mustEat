@@ -35,6 +35,9 @@ public interface BoardDAO {
 	//회원가입
 	public void memberJoin(BoardVO vo)throws Exception;
 	
+	//아이디 중복체크
+	public int idCheck(String id) throws Exception;
+	
 	//로그인
 	public BoardVO login(BoardVO vo)throws Exception;
 

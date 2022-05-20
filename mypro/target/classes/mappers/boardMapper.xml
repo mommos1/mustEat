@@ -81,6 +81,7 @@ from
    values(#{name}, #{content}, #{reviewStar}, #{commentId})
 </insert>
 
+<!-- 댓글 삭제 -->
 <delete id="delete_comment" parameterType="int">
 	delete
 		from musteat_comment
@@ -111,6 +112,13 @@ select
   		values(#{userId}, #{userPass}, #{userName}, #{userPhon}, #{userAddr1}, #{userAddr2}, #{userAddr3}, sysdate() )
 
   	</insert>
+  
+<!-- 아이디 중복체크 -->
+<select id="idCheck" resultType="int">
+
+	SELECT count(userId) FROM member WHERE userId= #{userId}
+
+</select>
   	
 <!-- 로그인 회원정보 확인 -->
 <select id="memberLogin" resultType="com.board.domain.BoardVO">

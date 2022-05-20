@@ -12,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.domain.BoardVO;
@@ -30,6 +32,7 @@ private static final org.slf4j.Logger logger = LoggerFactory.getLogger(BoardCont
 	
 @Inject
 
+@Autowired
 BoardService service;
 
 	/*
@@ -200,6 +203,18 @@ BoardService service;
 		  logger.info("회원가입 완료"); 
 		  return "redirect:/board/login";
 		
+	}
+	
+	//아이디 중복확인
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public int IdCheck(@RequestParam("id") String id) throws Exception {
+		
+		logger.info("userIdCheck 진입");	
+		logger.info("전달받은 id:"+id);
+        int cnt = service.idCheck(id);
+        logger.info("확인 결과:"+cnt);
+        return cnt;
 	}
 	
 	//로그인 페이지 이동

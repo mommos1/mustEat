@@ -45,29 +45,31 @@ public class BoardServicelmpl implements BoardService {
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		dao.jokbal_modify(vo);
-		
 	}
 
 	//게시물 후기 조회
 	@Override
 	public List<BoardVO> jokbal_comment(int bno) throws Exception {
-		
 		return dao.jokbal_comment(bno);
 	}
 
 	//게시물 후기 작성
 	@Override
-	public void jokbal_commentwrite(BoardVO vo) throws Exception {
-		
+	public void jokbal_commentwrite(BoardVO vo) throws Exception {	
 		dao.jokbal_commentwrite(vo);
-		
 	}
 	
 	//회원가입
 	@Override
 	public void memberJoin(BoardVO vo) throws Exception {
 		dao.memberJoin(vo);
-		
+	}
+	
+	//아이디 중복체크
+	@Override
+	public int idCheck(String id) throws Exception {
+		int cnt = dao.idCheck(id);
+		return cnt;
 	}
 
 	//로그인
