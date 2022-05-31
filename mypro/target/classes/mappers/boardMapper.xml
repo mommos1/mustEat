@@ -19,27 +19,6 @@ from musteat_night;
    values(#{name}, #{phone}, #{address}, #{message}, #{category})
 </insert>
 
-<!-- <update id="insertBoardMessage" parameterType="hashmap">
-				
-				INSERT INTO `board`.`musteat_list`
-				(`bno`,
-				`name`,
-				`phone`,
-				`address`,
-				`message`,
-				`viewCnt`)
-			
-			VALUES
-			
-				(#{bno}
-				#{name},
-				#{phone},
-				#{address},
-				#{message},
-				'0')
-
-</update> -->
-
 <!-- 게시물 조회 -->
 <select id="jokbal_view" parameterType="int" resultType="com.board.domain.BoardVO">
 
@@ -52,7 +31,7 @@ from
   
 </select>
 
-<!-- 맛집 쿠폰 수정  -->
+<!-- 맛집 게시물 수정  -->
 <update id="jokbal_modify" parameterType="com.board.domain.BoardVO" >
 
  update musteat_night
@@ -77,8 +56,8 @@ from
 <!-- 댓글작성 -->
 <insert id="jokbal_commentwrite" parameterType="com.board.domain.BoardVO">
  insert into
-  musteat_comment(name, content, reviewStar, commentId)
-   values(#{name}, #{content}, #{reviewStar}, #{commentId})
+  musteat_comment(userId, name, content, reviewStar, commentId)
+   values(#{userId}, #{name}, #{content}, #{reviewStar}, #{commentId})
 </insert>
 
 <!-- 댓글 삭제 -->
@@ -104,6 +83,61 @@ select
  		commentId = #{bno}
 
 </select>
+
+<!-- 쿠폰보기 = 리뷰 작성 갯수, 방문 횟수, 유저아이디 조회 -->
+<select id="musteat_coupon" parameterType="int" resultType="com.board.domain.BoardVO">
+
+	select
+			  userId
+			, commentId
+			, count(*) as commentCnt
+	 from 
+	 		musteat_comment
+	 where 
+	 		commentId = #{bno}
+	 		
+	 group by userId
+ 		
+</select>
+
+
+<!-- 페이지 방문 횟수 -->
+<select  id="selectViewCnt" parameterType="com.board.domain.BoardVO" resultType="int">
+
+	 select viewCnt 
+	   from musteat_viewCnt 
+	 where userId = #{userId}
+	     and commentId = #{bno}
+
+</select>
+
+
+<!-- 페이지 방문 시 viewCnt 업데이트 -->
+<update id="updateViewCnt"  parameterType="com.board.domain.BoardVO">
+
+	 update musteat_viewCnt 
+	       set viewCnt = viewCnt + 1 
+	  where userId = #{userId} 
+	      and commentId = #{bno}
+
+</update>
+
+
+
+<!-- 후기작성회수 -->
+<select id="selectComment" parameterType="com.board.domain.BoardVO" resultType="int">
+
+ 		SELECT 
+ 				count(*)  <!-- 후기작성 갯수  -->
+  		FROM 
+  				musteat_comment 
+		WHERE 
+				commentId= #{bno}   <!-- 가게 아이디 -->
+    	AND 
+    			userId= #{userId}  <!-- 유저아이디 -->
+
+</select>
+
 
 <!-- 회원가입 정보발송 -->
 <insert id="memberJoin" parameterType="com.board.domain.BoardVO">
@@ -131,5 +165,23 @@ select
          		userId = #{userId} and userPass = #{userPass}
       
 	</select>
+	
+	
+<!-- 쿠폰 갯수 조회  -->
+<select id="selectCouponCnt" parameterType="com.board.domain.BoardVO" resultType="int">
+
+	select count(*) 
+	  from musteat_coupon 
+	where userId = #{userId}
+	   and commentId = #{bno}
+
+</select>
+
+
+<!-- 쿠폰 생성 -->
+<insert id="insertCoupon" parameterType="com.board.domain.BoardVO">
+	insert into musteat_coupon 
+	values('admin', CAST(RAND() * 10000 AS UNSIGNED), 6)
+</insert>
 
 </mapper>

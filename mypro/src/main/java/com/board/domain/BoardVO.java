@@ -16,7 +16,9 @@ public class BoardVO {
 	private String category;
 	private String coupon;
 	private String couponnum;
+	private String couponCnt;
 	private String gdsThumbImg;
+	private String commentCnt;
 
 	//게시물 댓글
 	private String content;
@@ -45,6 +47,20 @@ public class BoardVO {
 	private String userAddr3;
 	private Date regiDate;
 	private int verify;
+	
+	public String getCouponCnt() {
+		return couponCnt;
+	}
+	public void setCouponCnt(String couponCnt) {
+		this.couponCnt = couponCnt;
+	}
+	
+	public String getCommentCnt() {
+		return commentCnt;
+	}
+	public void setCommentCnt(String commentCnt) {
+		this.commentCnt = commentCnt;
+	}
 	
 	public String getGdsThumbImg() {
 		return gdsThumbImg;

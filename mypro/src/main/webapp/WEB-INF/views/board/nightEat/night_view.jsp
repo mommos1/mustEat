@@ -118,9 +118,13 @@
                             주소 : ${jokbal_view.address}
                           <br><br><br><br>
                           
+                          <c:if test="${memberLogin.verify == 0}">
+                          <a href="/board/nightEat/night_couponUse?bno=${jokbal_view.bno}">쿠폰 사용하기<br></a>
+                          </c:if>
+                          
                          <c:if test="${memberLogin.verify == 9 }"> 
                           <a href="/board/nightEat/night_modify?bno=${jokbal_view.bno}">게시물 수정하기<br></a>  
-                          <a href="/board/nightEat/night_coupon?bno=${jokbal_view.bno}">쿠폰 관리<br><br></a>      
+                          <a href="/board/nightEat/night_coupon?bno=${jokbal_view.bno}&&userId=${memberLogin.userId}">쿠폰 관리<br><br></a>      
                           <a href="/board/nightEat/night_delete?bno=${jokbal_view.bno}">맛집 삭제</a>
                           </c:if> 
                                             
@@ -134,6 +138,8 @@
                 
                 <!-- 맛집 글 설명부분 -->
                 ${jokbal_view.message}
+                
+                	<c:if test="${memberLogin != null}">
                         <div class="card my-4">
                             <h5 class="card-header">후기를 남겨주세요!</h5>
                             <div class="card-body">
@@ -154,7 +160,9 @@
 										<label for="rate5">★</label>
 									</fieldset>
                                                       
-                                	<input class="form-control" type="text" name="name" placeholder="이름을 입력해주세요." /><br />                               
+                                    <input type="hidden" name="userId" value="${memberLogin.userId}"  />
+                                    <input  type="hidden" name="name" value="${memberLogin.userName }" />
+                                	<br><h2>${memberLogin.userName }</h2><br/>                               
                                     <div class="form-group">
                                     <textarea class="form-control" rows="3" name="content" placeholder="후기를 작성해주세요."></textarea>
                                     </div>
@@ -164,6 +172,26 @@
                                 
                             </div>
                         </div>
+                     </c:if>
+                     
+                     <c:if test="${memberLogin == null}">
+                     	
+                     	<div class="card my-4">
+                            <h5 class="card-header">로그인을 해주세요! </h5>
+                            <div class="card-body">                                                     
+                                                      
+                                    <input class="form-control" type="hidden" name="name" value="${memberLogin.userName }" />
+                                	<br><h2>${memberLogin.userName }</h2><br/>                               
+                                    <div class="form-group">
+                                    <textarea class="form-control" rows="3" name="content" placeholder="로그인이 필요합니다." disabled></textarea>
+                                    </div>
+                                    <input type="hidden" name="commentId" value="${jokbal_view.bno}">
+                                    <a href="/board/login"><button class="btn btn-primary">로그인 하러가기</button></a>   
+                                
+                            </div>
+                        </div>
+                     
+                     </c:if>
                                                
                                                
                        <c:forEach items="${jokbal_comment}" var="jokbal_comment" >
@@ -172,27 +200,9 @@
 	                        <div class="media mb-4">
 	                            <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="..." />
 	                            <div class="media-body">
-	                                <h5 class="mt-0">${jokbal_comment.name }</h5>                            
-	                                
-	                                
-
-<!-- 							<script type="text/javascript">
+	                                <h5 class="mt-0">${jokbal_comment.name }</h5>                                                                                        				
 							
-									document.write("<form id='myform'>"); 
-									document.write("<fieldset>"); 
-									document.write("<div id='formStar'>"); 
-									document.write("<input type='radio' name='reviewStar'>"); 
-										
-										for(int i =0; i< ${jokbal_comment.reviewStar}; i++) {
-											document.write("'<label for='rate5'>★</label>"); 
-										}
-									
-									document.write("</div'>"); 
-									document.write("</fieldset>"); 
-									document.write("</form>"); 
-							
-							
-							   </script> -->
+							   </script>
 							<c:if test="${jokbal_comment.reviewStar == 1 }">
                              			<form id="myform">
 		                                	<fieldset>

@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.domain.BoardVO;
 import com.board.service.BoardService;
+import com.mysql.cj.Session;
 import com.board.dao.BoardDAO;
 
 @Controller
@@ -59,13 +61,26 @@ BoardService service;
  
  //게시물 조회 댓글 조회 GET
  @RequestMapping(value = "/nightEat/night_view", method = RequestMethod.GET)
-	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
+	public void getView(@RequestParam("bno") int bno,
+							   @RequestParam("userId") String userId,
+							   Model model) throws Exception {
 	 
 	 	BoardVO vo = service.jokbal_view(bno);	 
 	 	model.addAttribute("jokbal_view",vo);
 	 
 	 	List jokbal_comment = null;
 	 	jokbal_comment = service.jokbal_comment(bno);
+	 	
+	 	// --------------------------------------------------------
+	 	BoardVO boardVo = new BoardVO();
+	 	boardVo.setUserId(userId);
+	 	boardVo.setBno(bno);
+	 	
+	 	System.out.println(boardVo.toString() + "이거 컨트롤러 boardVo");
+	 	
+	 	// 조회수 업데이트 서비스
+	 	service.updateViewCnt(boardVo);
+	 	
 	 	model.addAttribute("jokbal_comment",jokbal_comment);
 	 
  }
@@ -78,13 +93,17 @@ BoardService service;
 	 return "redirect:/board/nightEat/night_view?bno=" + vo.getBno();	 
 } 
  
- //족발 맛집 리스트
+ //족발 맛집 리스트 (김삿갓 족발보쌈)
  @RequestMapping(value = "/nightEat/jokbal", method = RequestMethod.GET)
 	public void getJokbal(Model model) throws Exception {
 	 
 	 	List list = null;
+	 	
 	 	list = service.list();
+	 	
 	 	System.out.println(list.toString());
+	 	
+	 	
 	 	model.addAttribute("list",list);		
 	}
  
@@ -149,11 +168,24 @@ BoardService service;
  
 	//맛집 쿠폰 수정 GET
 	@RequestMapping(value = "/nightEat/night_coupon", method = RequestMethod.GET)
-		public void getJokbal_coupon(@RequestParam("bno") int bno, Model model) throws Exception {
+		public void getJokbal_coupon(@RequestParam("bno") int bno, 
+												@RequestParam("userId") String	userId , 
+												Model model) throws Exception {
 		 
-		 BoardVO vo = service.jokbal_view(bno);
-		 
-		 model.addAttribute("jokbal_view",vo);
+		List musteat_coupon = null;
+		
+		// BoardVO 생성 
+		BoardVO boardVo = new BoardVO();
+		boardVo.setUserId(userId);
+		boardVo.setBno(bno);
+		
+		// 리뷰 작성 횟수, 방문횟수, 유저아이디 출력
+		musteat_coupon = service.musteat_coupon(boardVo);
+		
+		
+		
+	 	model.addAttribute("musteat_coupon",musteat_coupon);
+	 	model.addAttribute("bno", bno);
 		 
 	}
 
@@ -165,6 +197,10 @@ BoardService service;
 	  
 	return "redirect:/board/nightEat/night_view?bno=" + vo.getBno();
 	}
+	
+	//맛집 쿠폰 사용
+	@RequestMapping(value ="/nightEat/night_couponUse", method = RequestMethod.GET)
+	public void CouponUse() {	logger.info("쿠폰사용 페이지 진입"); }
 	
 	//맛집 삭제
 	@RequestMapping(value = "/nightEat/night_delete", method = RequestMethod.GET)
@@ -254,6 +290,30 @@ BoardService service;
 	   
 	 return "redirect:/";
 	}
+	
+	//쿠폰발행버튼
+		@RequestMapping(value = "/couponAdd", method = RequestMethod.GET)
+		public void couponAdd() throws Exception{
+			
+			logger.info("쿠폰추가");
+			
+		}
+		
+		
+		// 쿠폰 발행
+		@PostMapping("/couponAdd")
+		@ResponseBody
+		public int IdCheck(@RequestParam("userId") String userId, @RequestParam("bno") String bno) throws Exception {
+			
+			System.out.println("쿠폰발행 컨트롤러까지 넘어옴" + userId + bno);
+			
+			BoardVO vo = new BoardVO();
+			vo.setUserId(userId);
+			vo.setBno(Integer.parseInt(bno));
+			
+			int cnt = service.insertCoupon(vo);
+	        return cnt;
+		}
 
 
 

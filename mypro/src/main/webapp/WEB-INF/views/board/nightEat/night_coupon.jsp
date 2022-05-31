@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -16,15 +15,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description"content />
         <meta name="author" content />
-        <title>족발 / 보쌈</title>
+        <title>쿠폰 발행 / 수정</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <script src=""https://use.fontawesome.com/releases/v5.15.3/js/all.js"" crossorigin="anonymous"></script>
         <link href="../../../resources/css/styles.css" rel="stylesheet" type="text/css">
         
     </head>
     
-    <script type="text/javascript">      
+    <script type="text/javascript">     
     
+    $(document).ready(function(){
+    	
+    	// 쿠폰 발행 버튼 클릭 시
+  		$('.couponBtn').click(function() {
+  			couponAdd(); // 쿠폰 발행 함수 실행
+  		});
+  		
+    });
+    
+	    
+	    // 쿠폰 발행 함수
+	    function couponAdd(){
+	    	
+	        var userId = '${memberLogin.userId}';
+	        var bno = '${bno}';
+	        
+	        $.ajax({
+	            url:'/board/couponAdd', //Controller에서 인식할 주소
+	            type:'post', //POST 방식으로 전달
+	            data:{	
+	            			userId	:	userId,
+	            			bno		: 	bno
+	            		},
+	            success:function(cnt){
+
+	            	if(cnt > 0 ) {
+	            		alert(" 쿠폰 발행이 완료되었습니다. ")
+	            		
+	            	}
+	            	else {
+	            		alert(" 쿠폰 발행을 실패했습니다. 다시 시도하세요. ")
+	            	}
+	            	
+	              location.reload();
+	            	
+	            },
+	            error:function(){
+	                alert("에러입니다");
+	            }
+	        });
+	        
+	      
+	    };
+	    
     </script>
     
     <body>
@@ -95,40 +138,44 @@
             <div class="container">
                 <!-- Page Heading/Breadcrumbs-->
                 <h2>
-                   맛집 제보
+                   쿠폰 발행 / 수정
                     <small></small>
                 </h2>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">맛집 제보</li>
+                    <li class="breadcrumb-item active">쿠폰 발행 / 수정</li>
                 </ol>
-                <!-- Content Row-->
-                <div class="row">
                     
-                    <div class="col-lg-4 mb-4">
-                    <form method="post">
+                    <table class="table table-hover">
                     
-                    		<input name="name" type="hidden" value="${jokbal_view.name}"/>
-                            <input name="phone" type="hidden" value="${jokbal_view.phone}"/>
-                            <input name="address" type="hidden" value="${jokbal_view.address}"/>                            
-							<textarea name="message" style=display:none rows="10" cols="100" maxlength="999" style="resize: none">${jokbal_view.message}</textarea>
-							
-                    	<c:if test="${jokbal_view.coupon == null}">
-                    		쿠폰번호 : <input name="coupon" type="text" value="${jokbal_view.coupon}" placeholder="쿠폰 번호 입력" />
-                        	<br>쿠폰 매수 수정 : <input name="couponnum" type="text" value="${jokbal_view.couponnum}" placeholder="쿠폰 개수 입력" />
-                        	<br>                                                    
-                        </c:if>         		          		
-                    
-                    	<c:if test="${jokbal_view.coupon != null}">
-                    		쿠폰번호 : ${jokbal_view.coupon}<br>
-                        	쿠폰 매수 수정 : <input name="couponnum" type="text" value="${jokbal_view.couponnum}" placeholder="발행할 쿠폰 개수를 입력해주세요" />
-                        	<br>                                                    
-                        </c:if>
-                        <button class="btn btn-primary" id="sendMessageButton" type="submit" >완료</button>                                         	
-                        
-                        </form>
-                    </div>
-                </div>                                                       
+                    	<thead>
+                    	<tr>
+                    		<th>사용자 아이디</th>
+                    		<th>후기 작성</th>
+                    		<th>방문 횟수</th>
+                    		<th>발행된 쿠폰 매수</th>
+                    		<th>쿠폰 발행하기</th>
+                    	</tr>
+                    	</thead>
+                    	
+                    	<c:forEach items="${musteat_coupon}" var="musteat_coupon" >
+                    	<tbody>
+                    	
+                    	<tr>
+                    		<td>${musteat_coupon.userId}</td>
+                    		<td>${musteat_coupon.commentCnt}</td>
+                    		<td>${musteat_coupon.viewCnt }</td>
+                    		<td>${musteat_coupon.couponCnt }</td>
+                    		<td><button class="couponBtn btn btn-primary" type="submit">쿠폰 발행</button></td>
+                    	</tr>
+                    	
+                    	
+                    	</tbody>
+                    	
+                    	</c:forEach>
+                    	
+                    </table>
+                                                                          
         </section>
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br></p></div>

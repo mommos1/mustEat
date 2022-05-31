@@ -59,6 +59,28 @@ public class BoardServicelmpl implements BoardService {
 		dao.jokbal_commentwrite(vo);
 	}
 	
+	//맛집 쿠폰 조회
+	@Override
+	public List<BoardVO> musteat_coupon(BoardVO boardVo) throws Exception {
+		
+		
+		// 유저아이디, 리뷰작성 횟수
+		List<BoardVO> list = dao.musteat_coupon(boardVo.getBno());
+		
+		// list 안의 vo 에 방문 횟수 넣어주기.
+		for(BoardVO vo : list) {
+			
+			int viewCnt = dao.selectViewCnt(boardVo); // 방문 횟수
+			int couponCnt = dao.selectCouponCnt(boardVo); // 쿠폰 갯수
+
+			vo.setViewCnt(viewCnt); // 방문횟수 조회
+			vo.setCouponCnt(Integer.toString(couponCnt)); // 쿠폰 갯수 조회
+		}
+		
+		return list;
+	}
+	
+	
 	//회원가입
 	@Override
 	public void memberJoin(BoardVO vo) throws Exception {
@@ -98,5 +120,21 @@ public class BoardServicelmpl implements BoardService {
 		dao.delete_comment(bno);
 		
 	}
+
+	// 김삿갓 족발 페이지 시 방문 횟수 업데이트
+	@Override
+	public void updateViewCnt(BoardVO boardvo) throws Exception {
+		
+		dao.updateViewCnt(boardvo);
+		
+	}
+
+	// 쿠폰 발급
+	@Override
+	public int insertCoupon(BoardVO boardVo) throws Exception {
+		
+		return dao.insertCoupon(boardVo);
+	}
+	
 
 }

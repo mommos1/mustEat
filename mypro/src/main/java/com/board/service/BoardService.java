@@ -24,6 +24,9 @@ public interface BoardService {
 	//맛집 후기 조회
 	public List<BoardVO> jokbal_comment(int bno) throws Exception;
 	
+	//맛집 쿠폰 조회
+	public List<BoardVO> musteat_coupon(BoardVO boardVo) throws Exception;
+	
 	//맛집 수정
 	public void modify(BoardVO vo) throws Exception;
 	
@@ -44,6 +47,13 @@ public interface BoardService {
 	
 	//로그아웃
 	public void logout(HttpSession session)throws Exception;
+	
+	// 김삿갓 족발보쌈 조회수 증가
+	public void updateViewCnt(BoardVO boardvo) throws Exception;
+	
+	
+	// 쿠폰 발급
+	public int insertCoupon(BoardVO boardVo) throws Exception;
 	
 	
 }

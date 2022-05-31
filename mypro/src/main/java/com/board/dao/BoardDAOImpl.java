@@ -85,6 +85,13 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectList(namespace + ".jokbal_comment", bno);
 		
 	}
+	
+	//쿠폰 조회
+	@Override
+	public List<BoardVO> musteat_coupon(int bno) throws Exception {
+		System.out.println("여기 DAO " + bno );
+		return sql.selectList(namespace + ".musteat_coupon", bno);
+	}
 
 	//회원가입
 	@Override
@@ -104,6 +111,43 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardVO login(BoardVO vo) throws Exception {
 		return sql.selectOne(namespace + ".memberLogin", vo);
 	}
+	
+	
+	
+	// 방문횟수 int 조회
+	@Override
+	public int selectViewCnt(BoardVO boardVo) throws Exception {
+		
+		return sql.selectOne(namespace + ".selectViewCnt", boardVo);
+		
+	}
+
+
+	// 방문횟수  업데이트
+	@Override
+	public void updateViewCnt(BoardVO boardVo) throws Exception {
+
+		int cnt = sql.update(namespace + ".updateViewCnt", boardVo);
+		
+		System.out.println(cnt + "여기 DAO임 viewCnt");
+	}
+
+	// 쿠폰 갯수 조회
+	@Override
+	public int selectCouponCnt(BoardVO boardVo) throws Exception {
+		
+		return sql.selectOne(namespace + ".selectCouponCnt", boardVo);
+	}
+
+
+	// 쿠폰 발급
+	@Override
+	public int insertCoupon(BoardVO boardVo) throws Exception {
+		
+		return sql.insert(namespace + ".insertCoupon", boardVo);
+		
+	}
+
 
 
 }

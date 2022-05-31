@@ -72,7 +72,7 @@
 		        <li><a href="#">고객지원</a>
 					<ul class="inner">
 						<li><a href="#"><span>고객문의</span></a></li>
-						
+						<li><a href="/board/nightEat/night_couponUse"><span>내 쿠폰정보</span></a></li>
 						<c:if test="${memberLogin.verify == 9 }">
 						<li><a href="/board/contact"><span>맛집등록</span></a></li>
 						</c:if>

@@ -1,23 +1,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+    
+    	<!-- jQuery  -->
+    	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    	
+    	
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>족발 보쌈</title>
-        <!-- Favicon-->
+        <meta name="description"content />
+        <meta name="author" content />
+        <title>쿠폰 정보</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../../../resources/css/styles.css" rel="stylesheet" />
+        <script src=""https://use.fontawesome.com/releases/v5.15.3/js/all.js"" crossorigin="anonymous"></script>
+        <link href="../../../resources/css/styles.css" rel="stylesheet" type="text/css">
+        
     </head>
+    
+    <script type="text/javascript">      
+    
+    </script>
+    
     <body>
+    
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -25,13 +36,9 @@
 				<img src="../../../resources/img/메인로고.png" alt="로고">
 				<!-- alt = 앞의 이미지를 보여줄수 없을때 대체할 텍스트를 명시  -->		
 			</a></h1>
-                <!-- <a class="navbar-brand" href="index.html">Must Eat </a> -->
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <!-- <li class="nav-item"><a class="nav-link" href="about.html">must eat</a></li>
-                        <li class="nav-item"><a class="nav-link" href="services.html">대전맛집</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">이벤트</a></li>-->
+                    <ul class="navbar-nav ml-auto">                       
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">must eat</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
@@ -87,58 +94,52 @@
         <section class="py-5">
             <div class="container">
                 <!-- Page Heading/Breadcrumbs-->
-                <h1>
-                    족발/보쌈
+                <h2>
+                   쿠폰 정보
                     <small></small>
-                </h1>
+                </h2>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">족발/보쌈</li>
+                    <li class="breadcrumb-item active">쿠폰 정보</li>
                 </ol>
-                <!-- Blog Post-->
                 
-              <c:forEach items="${list}" var="list">
-              	<c:if test="${list.category == 1 }">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                        
-                            <div class="col-lg-6">
-                                <a href="#!"><img class="img-fluid rounded" src="#" alt="..."style = "height:300px; width:550px" /></a>
-                            </div>
-                            
-                            <div class="col-lg-6">
-                                <h2 class="card-title">${list.name}</h2>
-                                <p class="card-text">${list.message} </p>
-                                <a class="btn btn-primary" href="/board/nightEat/night_view?bno=${list.bno}&&userId=${memberLogin.userId}">맛집 보기 →</a>
-                            </div>
-                
-               
-                        </div>
-                    </div>
-                    <div class="card-footer text-muted">
-                        ${list.address} / ${list.phone}
-                        
-                    </div>
-                </div>
-                </c:if>
-              </c:forEach>                     
-                
-                <!-- Pagination-->
-                <ul class="pagination justify-content-center mb-4">
-                    <li class="page-item"><a class="page-link" href="#!">← Older</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#!">Newer →</a></li>
-                </ul>
-            </div>
+                <table class="table table-hover">
+                    
+                    	<thead>
+                    	<tr>
+                    		<th>맛집 이름</th>
+                    		<th>후기 작성</th>
+                    		<th>방문 횟수</th>
+                    		<th>보유 쿠폰</th>
+                    		<th>쿠폰 사용하기</th>
+                    	</tr>
+                    	</thead>
+                    	<tbody>
+                    	
+                    	<tr>
+                    		<td>김삿갓 족발보쌈</td>
+                    		<td>3</td>
+                    		<td>5</td>
+                    		<td>3</td>
+                    		<td><button class="btn btn-primary" type="submit">쿠폰 사용</button></td>
+                    	</tr>
+                    	
+                    	<tr>
+                    		<td>양평5일장 왕족발</td>
+                    		<td>2</td>
+                    		<td>6</td>
+                    		<td>2</td>
+                    		<td><button class="btn btn-primary" type="submit">쿠폰 사용</button></td>
+                    	</tr>
+                    	  	
+                    	</tbody>
+                    	
+                    </table>
+                                                                  
         </section>
-        <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white"></p></div>
+            <div class="container"><p class="m-0 text-center text-white">목원대학교 융합컴퓨터미디어학부 <br></p></div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </body>
 </html>
