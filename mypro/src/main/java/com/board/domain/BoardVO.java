@@ -19,10 +19,13 @@ public class BoardVO {
 	private String couponCnt;
 	private String gdsThumbImg;
 	private String commentCnt;
+	private String useStatus;
 
 	//게시물 댓글
 	private String content;
 	private Date regDate;
+	
+	// 카멜표기법 <- 
 	
 	//두번째 회원가입
 	/*
@@ -47,6 +50,15 @@ public class BoardVO {
 	private String userAddr3;
 	private Date regiDate;
 	private int verify;
+	
+
+	
+	public String getUseStatus() {
+		return useStatus;
+	}
+	public void setUseStatus(String useStatus) {
+		this.useStatus = useStatus;
+	}
 	
 	public String getCouponCnt() {
 		return couponCnt;

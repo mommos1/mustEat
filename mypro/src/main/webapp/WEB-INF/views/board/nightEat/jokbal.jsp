@@ -95,7 +95,7 @@
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active">족발/보쌈</li>
                 </ol>
-                <!-- Blog Post-->
+                <!-- Blog Post-->              
                 
               <c:forEach items="${list}" var="list">
               	<c:if test="${list.category == 1 }">
@@ -104,7 +104,7 @@
                         <div class="row">
                         
                             <div class="col-lg-6">
-                                <a href="#!"><img class="img-fluid rounded" src="#" alt="..."style = "height:300px; width:550px" /></a>
+                                <a href="#!"><img class="img-fluid rounded" src="https://d12zq4w4guyljn.cloudfront.net/20200501102956_photo1_e4885f69084c.jpg" alt="..."style = "height:300px; width:550px" /></a>
                             </div>
                             
                             <div class="col-lg-6">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 </c:if>
-              </c:forEach>                     
+              </c:forEach>                
                 
                 <!-- Pagination-->
                 <ul class="pagination justify-content-center mb-4">

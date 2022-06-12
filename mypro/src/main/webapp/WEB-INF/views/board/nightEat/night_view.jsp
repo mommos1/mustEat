@@ -104,8 +104,8 @@
                 <!-- Content Row-->
                 <div class="row">
                      <div class="col-lg-8 mb-4">
-                        <!-- 구글맵 Map -->
-                        <iframe style="width: 100%; height: 400px; border: 0" src="https://map.naver.com/v5/directions/-/-/-/transit?c=14172953.7846374,4354158.8792368,7,0,0,0,dh"></iframe>
+                        <!-- 구글맵 Map -->              
+                        <img class="img-fluid rounded" src="https://d12zq4w4guyljn.cloudfront.net/20200501102956_photo1_e4885f69084c.jpg" alt="..."style="width: 100%; height: 400px; border: 0" />
                     </div> 
                     <!-- Contact Details Column -->
                     <div class="col-lg-4 mb-4">
@@ -123,8 +123,9 @@
                           </c:if>
                           
                          <c:if test="${memberLogin.verify == 9 }"> 
-                          <a href="/board/nightEat/night_modify?bno=${jokbal_view.bno}">게시물 수정하기<br></a>  
-                          <a href="/board/nightEat/night_coupon?bno=${jokbal_view.bno}&&userId=${memberLogin.userId}">쿠폰 관리<br><br></a>      
+                          <a href="/board/nightEat/night_modify?bno=${jokbal_view.bno}">게시물 수정하기<br></a>
+                          <a href="/board/nightEat/night_couponPer?bno=${jokbal_view.bno}">쿠폰관리<br></a>
+                          <a href="/board/nightEat/night_coupon?bno=${jokbal_view.bno}&&userId=${memberLogin.userId}">쿠폰 발행<br><br></a>      
                           <a href="/board/nightEat/night_delete?bno=${jokbal_view.bno}">맛집 삭제</a>
                           </c:if> 
                                             
@@ -160,7 +161,7 @@
 										<label for="rate5">★</label>
 									</fieldset>
                                                       
-                                    <input type="hidden" name="userId" value="${memberLogin.userId}"  />
+                                    <%-- <input type="hidden" name="userId" value="${memberLogin.userId}"  /> --%>
                                     <input  type="hidden" name="name" value="${memberLogin.userName }" />
                                 	<br><h2>${memberLogin.userName }</h2><br/>                               
                                     <div class="form-group">
@@ -202,7 +203,7 @@
 	                            <div class="media-body">
 	                                <h5 class="mt-0">${jokbal_comment.name }</h5>                                                                                        				
 							
-							   </script>
+							   
 							<c:if test="${jokbal_comment.reviewStar == 1 }">
                              			<form id="myform">
 		                                	<fieldset>

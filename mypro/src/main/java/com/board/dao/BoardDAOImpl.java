@@ -89,8 +89,12 @@ public class BoardDAOImpl implements BoardDAO {
 	//쿠폰 조회
 	@Override
 	public List<BoardVO> musteat_coupon(int bno) throws Exception {
-		System.out.println("여기 DAO " + bno );
 		return sql.selectList(namespace + ".musteat_coupon", bno);
+	}
+	
+	//쿠폰번호 조회
+	public List<BoardVO> musteat_couponNum(BoardVO boardVo) throws Exception {
+		return sql.selectList(namespace + ".couponNum", boardVo);
 	}
 
 	//회원가입

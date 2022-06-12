@@ -23,7 +23,7 @@ from musteat_night;
 <select id="jokbal_view" parameterType="int" resultType="com.board.domain.BoardVO">
 
  select 
-		bno,name,phone,address,message,viewCnt,coupon,couponnum
+		bno,name,phone,address,message,viewCnt
 from 
 		musteat_night
  where
@@ -84,16 +84,29 @@ select
 
 </select>
 
+<!-- 쿠폰 사용탭 쿠폰번호 조회 -->
+<select id="couponNum" resultType="com.board.domain.BoardVO">
+
+	 SELECT couponnum
+	 		  , commentId
+	 		  , useStatus
+	 		  
+	   FROM musteat_coupon
+	   
+	 WHERE userId = #{userId}
+	     
+</select>
+
 <!-- 쿠폰보기 = 리뷰 작성 갯수, 방문 횟수, 유저아이디 조회 -->
 <select id="musteat_coupon" parameterType="int" resultType="com.board.domain.BoardVO">
 
-	select
+	SELECT
 			  userId
 			, commentId
 			, count(*) as commentCnt
-	 from 
+	 FROM 
 	 		musteat_comment
-	 where 
+	 WHERE 
 	 		commentId = #{bno}
 	 		
 	 group by userId
@@ -104,10 +117,10 @@ select
 <!-- 페이지 방문 횟수 -->
 <select  id="selectViewCnt" parameterType="com.board.domain.BoardVO" resultType="int">
 
-	 select viewCnt 
-	   from musteat_viewCnt 
-	 where userId = #{userId}
-	     and commentId = #{bno}
+	 SELECT viewCnt 
+	   FROM musteat_viewCnt 
+	 WHERE userId = #{userId}
+	     AND commentId = #{bno}
 
 </select>
 
@@ -170,10 +183,10 @@ select
 <!-- 쿠폰 갯수 조회  -->
 <select id="selectCouponCnt" parameterType="com.board.domain.BoardVO" resultType="int">
 
-	select count(*) 
-	  from musteat_coupon 
-	where userId = #{userId}
-	   and commentId = #{bno}
+	SELECT count(*) 
+	  FROM musteat_coupon 
+	WHERE userId = #{userId}
+	   AND commentId = #{bno}
 
 </select>
 
@@ -181,7 +194,7 @@ select
 <!-- 쿠폰 생성 -->
 <insert id="insertCoupon" parameterType="com.board.domain.BoardVO">
 	insert into musteat_coupon 
-	values('admin', CAST(RAND() * 10000 AS UNSIGNED), 6)
+	values(#{userId}, CAST(RAND() * 10000 AS UNSIGNED), #{bno})
 </insert>
 
 </mapper>

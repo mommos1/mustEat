@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -95,42 +94,41 @@
             <div class="container">
                 <!-- Page Heading/Breadcrumbs-->
                 <h2>
-                   쿠폰 정보
+                   내 쿠폰 정보
                     <small></small>
                 </h2>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">쿠폰 정보</li>
+                    <li class="breadcrumb-item active">${memberLogin.userName} 님 쿠폰 정보</li>
                 </ol>
                 
                 <table class="table table-hover">
                     
                     	<thead>
                     	<tr>
+                    		<th>쿠폰 번호</th>
                     		<th>맛집 이름</th>
-                    		<th>후기 작성</th>
-                    		<th>방문 횟수</th>
-                    		<th>보유 쿠폰</th>
+                    		<th>발급 일자</th>
                     		<th>쿠폰 사용하기</th>
                     	</tr>
                     	</thead>
                     	<tbody>
                     	
-                    	<tr>
-                    		<td>김삿갓 족발보쌈</td>
-                    		<td>3</td>
-                    		<td>5</td>
-                    		<td>3</td>
-                    		<td><button class="btn btn-primary" type="submit">쿠폰 사용</button></td>
-                    	</tr>
+                    	<c:forEach items="${musteat_couponUse}" var="musteat_couponUse" >
                     	
                     	<tr>
-                    		<td>양평5일장 왕족발</td>
-                    		<td>2</td>
-                    		<td>6</td>
-                    		<td>2</td>
-                    		<td><button class="btn btn-primary" type="submit">쿠폰 사용</button></td>
-                    	</tr>
+                    		<td>${musteat_couponUse.couponnum}</td>
+                    		<c:if test="${musteat_couponUse.commentId == 6 }">
+                             		<td>김삿갓 족발 보쌈</td>
+		                    </c:if>
+		                    <c:if test="${musteat_couponUse.commentId == 7 }">
+                             		<td>양평5일장 왕족발</td>
+		                    </c:if>
+                    		<td>${musteat_couponUse.useStatus}</td>
+                    		<td><button class="couponBtn btn btn-primary" type="submit">쿠폰 사용</button></td>
+                    	</tr>               	
+                    	
+                    	</c:forEach>
                     	  	
                     	</tbody>
                     	

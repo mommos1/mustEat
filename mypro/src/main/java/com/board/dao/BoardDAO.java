@@ -32,6 +32,9 @@ public interface BoardDAO {
 	//쿠폰보기
 	public List<BoardVO> musteat_coupon(int bno) throws Exception;
 	
+	//쿠폰 번호조회
+	public List<BoardVO> musteat_couponNum(BoardVO boardVo) throws Exception;
+	
 	//게시물 후기작성
 	public void jokbal_commentwrite(BoardVO vo) throws Exception;
 	

@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description"content />
         <meta name="author" content />
-        <title>쿠폰 발행 / 수정</title>
+        <title>쿠폰 발행</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <script src=""https://use.fontawesome.com/releases/v5.15.3/js/all.js"" crossorigin="anonymous"></script>
         <link href="../../../resources/css/styles.css" rel="stylesheet" type="text/css">
@@ -28,24 +28,32 @@
     	
     	// 쿠폰 발행 버튼 클릭 시
   		$('.couponBtn').click(function() {
-  			couponAdd(); // 쿠폰 발행 함수 실행
+  			
+			var checkBtn = $(this);
+  			
+			var tr = checkBtn.parent().parent();
+			var td = tr.children();
+	    	
+	        var userId = td.eq(0).text();
+	        
+	        
+  			couponAdd(userId); // 쿠폰 발행 함수 실행
   		});
   		
     });
     
 	    
 	    // 쿠폰 발행 함수
-	    function couponAdd(){
+	    function couponAdd(srcUserId){
 	    	
-	        var userId = '${memberLogin.userId}';
-	        var bno = '${bno}';
+	        var srcBno = '${bno}';
 	        
 	        $.ajax({
 	            url:'/board/couponAdd', //Controller에서 인식할 주소
 	            type:'post', //POST 방식으로 전달
 	            data:{	
-	            			userId	:	userId,
-	            			bno		: 	bno
+	            			userId	:	srcUserId,
+	            			bno		: 	srcBno
 	            		},
 	            success:function(cnt){
 
@@ -162,13 +170,12 @@
                     	<tbody>
                     	
                     	<tr>
-                    		<td>${musteat_coupon.userId}</td>
+                    		<td class="forUserId">${musteat_coupon.userId}</td>
                     		<td>${musteat_coupon.commentCnt}</td>
                     		<td>${musteat_coupon.viewCnt }</td>
                     		<td>${musteat_coupon.couponCnt }</td>
                     		<td><button class="couponBtn btn btn-primary" type="submit">쿠폰 발행</button></td>
                     	</tr>
-                    	
                     	
                     	</tbody>
                     	

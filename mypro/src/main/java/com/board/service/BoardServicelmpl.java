@@ -70,8 +70,10 @@ public class BoardServicelmpl implements BoardService {
 		// list 안의 vo 에 방문 횟수 넣어주기.
 		for(BoardVO vo : list) {
 			
-			int viewCnt = dao.selectViewCnt(boardVo); // 방문 횟수
-			int couponCnt = dao.selectCouponCnt(boardVo); // 쿠폰 갯수
+			vo.setBno(boardVo.getBno());
+			
+			int viewCnt = dao.selectViewCnt(vo); // 방문 횟수
+			int couponCnt = dao.selectCouponCnt(vo); // 쿠폰 갯수
 
 			vo.setViewCnt(viewCnt); // 방문횟수 조회
 			vo.setCouponCnt(Integer.toString(couponCnt)); // 쿠폰 갯수 조회
@@ -79,6 +81,16 @@ public class BoardServicelmpl implements BoardService {
 		
 		return list;
 	}
+	
+	//맛집 쿠폰 사용
+	@Override
+	public List<BoardVO> musteat_couponUse(BoardVO boardVo) throws Exception {
+			
+		// 유저아이디, 리뷰작성 횟수
+		List<BoardVO> list = dao.musteat_couponNum(boardVo);
+			
+			return list;
+		}
 	
 	
 	//회원가입
