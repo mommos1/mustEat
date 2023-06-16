@@ -121,11 +121,11 @@ boardMapper.xml 일부
 <select id="memberLogin" resultType="com.board.domain.BoardVO">
       
          select 
-         		userId, userName, userPass, userPhon, userAddr1, userAddr2, userAddr3, regiDate, verify 
+         	userId, userName, userPass, userPhon, userAddr1, userAddr2, userAddr3, regiDate, verify 
          from 
-         		member 
+         	member 
          where 
-         		userId = #{userId} and userPass = #{userPass}
+         	userId = #{userId} and userPass = #{userPass}
       
 </select>
 ~~~
