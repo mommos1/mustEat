@@ -17,7 +17,7 @@
 - Language : JAVA, Javascript, HTML, CSS
 - Tool : Eclipse, GitHub
 
-## 내용 (구현 기능)
+## 내용 (구현 기능 일부)
 ### 로그인
   
 login.jsp 일부
